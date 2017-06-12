@@ -1,0 +1,198 @@
+html {
+	font-size: 16px;
+	font-family: 'Fira Sans', sans-serif;
+}
+
+.wrap {
+	max-width: 1200px;
+	margin: 0px auto;
+}
+
+.main-header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+		 -ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+		 -ms-flex-align: center;
+				align-items: center;
+}
+
+.compass-logo {
+	margin: 20px 0px;
+	width: 179px;
+	height: 24px;
+}
+
+.menu-item {
+	color: #3e4247;
+	text-decoration: none;
+}
+
+.menu-item:not(:last-child) {
+	margin-right: 2rem;
+}
+
+.development-promo {
+	background-color: #161616
+}
+
+.development-logo {
+	display: block;
+	margin: 0px auto;
+	padding: 80px 0px;
+	width: 419px;
+	height: 131px;
+}
+
+.catalog {
+	background-color: #eaebf0;
+	background-image: url(img/background.png);
+	background-size: 20px 10px;
+	padding: 3rem 0px 6rem;
+}
+
+.intro {
+	text-align: center;
+	color: #3e4247;
+	margin-bottom: 4rem;
+}
+
+.intro-title {
+	padding-top: .875rem;
+	margin: 0px;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 2.5rem;
+}
+
+.intro-text {
+	margin: 8px 0px 0px;
+	line-height: 1.5rem;
+}
+
+.intro-button {
+	background-color: #000;
+	border: none;
+	border-radius: 2px;
+	color: #fff;
+	padding: 13px 31px;
+	margin-top: 16px;
+	font-family: 'Fira Sans', sans-serif;
+	font-size: 1rem;
+}
+
+.offering {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+		 -ms-flex-pack: justify;
+	justify-content: space-between;
+	margin: 3rem auto 0px;
+	max-width: 1200px;
+	background: #fff;
+}
+
+.offering-preview {
+	z-index: 10;
+	width: 536px;
+	height: 350px;
+}
+
+.offering-info {
+	display: block;
+	padding: 0px 32px;
+	border-bottom: solid 2px #646971;
+}
+
+.offering-location {
+	display: block;
+	font-family: monaco, Consolas, 'Lucida Console', monospace;
+	color: #646971;
+	margin-top: 24px;
+}
+
+.offering-name {
+	display: block;
+	margin: 24px 0px 0px;
+	font-weight: 700;
+	font-size: 2.5rem;
+	line-height: 3.5rem;
+	color: #000;
+}
+
+.offering-desc {
+	display: block;
+	margin-top: 8px;
+	line-height: 1.5rem;
+	color: #3e4247;
+}
+
+.main-footer {
+	background-color: #111;
+	color: #a9afb6;
+	padding: 32px 0px;
+	font-size: .875rem;
+	line-height: 1.5rem;
+	font-weight: 300;
+}
+
+.footer-header {
+	font-weight: 700;
+	color: #646971;
+	margin: 0px;
+}
+
+.footer-info {
+	margin-top: 8px;
+}
+
+.footer-link {
+	display: inline-block;
+	font-weight: 300;
+	color: #fff;
+	text-decoration: none;
+	margin-top: 8px;
+}
+
+.footer-link-all {
+	position: relative;
+	margin-top: 16px;
+}
+
+.footer-link-all::after {
+	content: "";
+	display: block;
+	background-image: url(img/arrow.svg);
+	position: absolute;
+	right: -16px;
+	top: 8px;
+	width: 9px;
+	height: 8px;
+}
+
+.footer-link-list {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.footer-list::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 2px;
+	background-color: #646971;
+	margin-bottom: 16px;
+}
+
+.copyright {
+	padding-top: 96px;
+	margin: 0px;
+	font-size: .687rem;
+	text-align: left;
+	line-height: 1.15rem;
+}
