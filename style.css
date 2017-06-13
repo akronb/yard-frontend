@@ -3,12 +3,22 @@ html {
   font-family: 'Fira Sans', sans-serif;
 }
 
+body {
+  background-color: #eaebf0;
+  background-image: url(img/background.png);
+  background-size: 20px 10px;
+}
+
 .wrap {
   max-width: 1200px;
   margin: 0px auto;
 }
 
 .main-header {
+  background: #fff;
+}
+
+.main-header-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,7 +31,7 @@ html {
 }
 
 .compass-logo {
-  margin: 20px 0px;
+  margin: 1.25rem 0px;
   width: 179px;
   height: 24px;
 }
@@ -42,15 +52,12 @@ html {
 .development-logo {
   display: block;
   margin: 0px auto;
-  padding: 80px 0px;
+  padding: 5rem 0px;
   width: 419px;
   height: 131px;
 }
 
 .catalog {
-  background-color: #eaebf0;
-  background-image: url(img/background.png);
-  background-size: 20px 10px;
   padding: 4rem 0px 6rem;
 }
 
@@ -68,7 +75,7 @@ html {
 }
 
 .intro-text {
-  margin: 8px 0px 0px;
+  margin: .5rem 0px 0px;
   line-height: 1.5rem;
 }
 
@@ -77,8 +84,8 @@ html {
   border: none;
   border-radius: 2px;
   color: #fff;
-  padding: 13px 31px;
-  margin-top: 16px;
+  padding: .8125rem 2rem;
+  margin-top: 1rem;
   font-family: 'Fira Sans', sans-serif;
   font-size: 1rem;
 }
@@ -94,10 +101,15 @@ html {
   max-width: 1200px;
   background: #fff;
   text-decoration: none;
+  transition: .2s ease-in-out;
+}
+
+.offering:hover {
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
 }
 
 .offering-preview {
-  width: 536px;
+  width: 484px;
   height: 350px;
   ms-flex-negative: 0;
   flex-shrink: 0;
@@ -105,7 +117,7 @@ html {
 
 .offering-info {
   display: block;
-  padding: 0px 32px;
+  padding: 0px 2rem;
   border-bottom: solid 2px #646971;
 }
 
@@ -113,12 +125,12 @@ html {
   display: block;
   font-family: monaco, Consolas, 'Lucida Console', monospace;
   color: #646971;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 .offering-name {
   display: block;
-  margin: 24px 0px 0px;
+  margin: 1.5rem 0px 0px;
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 3.5rem;
@@ -127,7 +139,7 @@ html {
 
 .offering-desc {
   display: block;
-  margin-top: 8px;
+  margin-top: .5rem;
   line-height: 1.5rem;
   color: #3e4247;
 }
@@ -135,7 +147,7 @@ html {
 .main-footer {
   background-color: #111;
   color: #a9afb6;
-  padding: 32px 0px;
+  padding: 2rem 0px;
   font-size: .875rem;
   line-height: 1.5rem;
   font-weight: 300;
@@ -161,37 +173,29 @@ html {
 
 .footer-link-all {
   position: relative;
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
 .footer-link-all::after {
-  content: "";
-  display: block;
-  background-image: url(img/arrow.svg);
-  position: absolute;
-  right: -16px;
-  top: 8px;
-  width: 9px;
-  height: 8px;
+  content: url(img/arrow.svg);
+  margin-left: .5rem
 }
 
-.footer-link-list {
+.footer-list {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
 }
 
-.footer-list::before {
-  content: "";
-  display: block;
-  width: 100%;
+.footer-list-start {
+  border: 0;
   height: 2px;
   background-color: #646971;
   margin-bottom: 16px;
 }
 
 .copyright {
-  padding-top: 96px;
+  padding-top: 6rem;
   margin: 0px;
   font-size: .687rem;
   text-align: left;
