@@ -97,9 +97,10 @@ html {
 }
 
 .offering-preview {
-  z-index: 10;
   width: 536px;
   height: 350px;
+  ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .offering-info {
