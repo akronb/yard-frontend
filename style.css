@@ -39,6 +39,7 @@ body {
   display: inline-block;
   color: #3e4247;
   text-decoration: none;
+  line-height: 1rem;
 }
 
 .header__link:not(:last-child) {
@@ -154,6 +155,40 @@ body {
   background-color: #eaebf0;
 }
 
+.complex-carousel {
+  height: 400px;
+}
+
+.complex-carousel__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  overflow-x: auto;
+  height: 400px;
+}
+
+.complex-carousel__image {
+  max-height: 400px;
+}
+
+.complex-carousel__button {
+  position: relative;
+  display: block;
+  margin-top: -2.625rem;
+  cursor: pointer;
+  background-color: #00779a;
+  border: none;
+  border-radius: 2px;
+  color: #00779a;
+  padding: .5rem 1rem;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 300;
+  font-size: .625rem;
+  line-height: .625rem;
+  color: #fff;
+}
+
 .complex {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
@@ -163,7 +198,7 @@ body {
 .complex__separation-line {
   border: 0;
   margin: 1.5rem 0px 2rem;
-  height: 1px;
+  height: 2px;
   background-color: #e0e0e1;
 }
 
@@ -181,7 +216,7 @@ body {
   font-family: "Philosopher", serif;
   font-weight: 700;
   font-size: 2rem;
-  line-height: 2.125rem;
+  line-height: 36px;
   color: #3e4247;
 }
 
@@ -190,7 +225,7 @@ body {
   margin-bottom: 0px;
   font-weight: 300;
   font-size: .875rem;
-  line-height: 1.375rem;
+  line-height: 22px;
   color: #a9afb6;
 }
 
@@ -220,6 +255,7 @@ body {
   font-family: "Philosopher", serif;
   font-weight: 700;
   font-size: 1.5rem;
+  line-height: 27px;
   color: #3e4247;
 }
 
@@ -233,6 +269,7 @@ body {
   font-family: "Fira Sans", sans-serif;
   font-weight: 300;
   font-size: .875rem;
+  line-height: 22px;
   color: #a9afb6;
 }
 
@@ -241,7 +278,6 @@ body {
   display: -ms-flexbox;
   display: flex;
   margin: 0;
-  line-height: 1.5rem;
 }
 
 .complex-features__feature:first-child {
@@ -255,6 +291,7 @@ body {
 .complex-features__label {
   width: 50%;
   margin: 0px;
+  line-height: 22px;
   color: #a9afb6;
 }
 
@@ -262,6 +299,7 @@ body {
   width: 50%;
   margin: 0px;
   font-weight: 500;
+  line-height: 25px;
   color: #3e4247;
 }
 
@@ -271,7 +309,7 @@ body {
 
 .complex-desc__text {
   color: #3e4247;
-  line-height: 1.5rem;
+  line-height: 25px;
   white-space: pre-wrap;
 }
 
@@ -309,7 +347,8 @@ body {
   font-family: "Philosopher", serif;
   font-weight: 700;
   font-size: 1.25rem;
-  line-height: 1.375rem
+  line-height: 1.375rem;
+  color: #3e4247;
 }
 
 .complex-offers__feature {
@@ -339,7 +378,6 @@ body {
   border-radius: 2px;
   color: #fff;
   padding: .75rem 2rem;
-  margin-top: 1rem;
   font-family: 'Fira Sans', sans-serif;
   font-size: 1rem;
 }
@@ -354,6 +392,7 @@ body {
   font-family: "Philosopher", serif;
   font-size: 1.5rem;
   font-weight: 700;
+  line-height: 27px;
   color: #a9afb6;
   margin-bottom: 3rem;
 }
@@ -362,7 +401,7 @@ body {
   font-family: "Philosopher", serif;
   font-size: 3rem;
   font-weight: bold;
-  line-height: 3.75rem;
+  line-height: 60px;
   color: #ffffff;
 }
 
@@ -371,6 +410,7 @@ body {
   text-decoration: none;
   font-size: 16px;
   text-align: left;
+  line-height: 24px;
   color: #00779a;
   margin-top: 3rem;
 }
@@ -392,13 +432,13 @@ body {
 .complex-location__map {
   width: 100%;
   height: 302px;
-  margin-top: -9.5rem;
+  margin-top: -9.75rem;
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
           box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
 }
 
 .complex-location__nearby-places {
-  margin-top: -9.5rem;
+  margin-top: -9.75rem;
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
           box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
   background-color: #fff;
