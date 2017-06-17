@@ -1,6 +1,9 @@
 html {
   font-size: 16px;
   font-family: 'Fira Sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -10,11 +13,11 @@ body {
   line-height: 1.4rem;
 }
 
-.main-header {
+.header {
   background: #fff;
 }
 
-.main-header__wrapper {
+.header__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,18 +29,19 @@ body {
         align-items: center;
 }
 
-.main-header__logo {
+.header__logo {
   margin: 1.25rem 0px;
   width: 179px;
   height: 24px;
 }
 
-.main-header__link {
+.header__link {
+  display: inline-block;
   color: #3e4247;
   text-decoration: none;
 }
 
-.main-header__link:not(:last-child) {
+.header__link:not(:last-child) {
   margin-right: 2rem;
 }
 
@@ -76,6 +80,7 @@ body {
 }
 
 .intro__button {
+  cursor: pointer;
   background-color: #000;
   border: none;
   border-radius: 2px;
@@ -142,7 +147,285 @@ body {
   color: #3e4247;
 }
 
-.main-footer {
+.separation-line {
+  border: 0;
+  margin: 0;
+  height: 1px;
+  background-color: #eaebf0;
+}
+
+.complex {
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  background: #fff;
+}
+
+.complex__separation-line {
+  border: 0;
+  margin: 1.5rem 0px 2rem;
+  height: 1px;
+  background-color: #e0e0e1;
+}
+
+.complex-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.complex-intro__name {
+  margin: 0px;
+  font-family: "Philosopher", serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.125rem;
+  color: #3e4247;
+}
+
+.complex-intro__location {
+  margin-top: .5rem;
+  margin-bottom: 0px;
+  font-weight: 300;
+  font-size: .875rem;
+  line-height: 1.375rem;
+  color: #a9afb6;
+}
+
+.complex-intro__fav-button {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #e0e0e1;
+  border-radius: 2px;
+  color: #00779a;
+  padding: .5rem 1rem;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 300;
+  font-size: .625rem;
+  line-height: .625rem;
+}
+
+.complex-summary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.complex-heading {
+  margin: 0px;
+  font-family: "Philosopher", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #3e4247;
+}
+
+.complex-summary .complex-heading:not(:last-child) {
+  margin-right: 3rem;
+}
+
+.complex-summary__subheading {
+  display: block;
+  margin-top: .625rem;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-size: .875rem;
+  color: #a9afb6;
+}
+
+.complex-features__feature {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  line-height: 1.5rem;
+}
+
+.complex-features__feature:first-child {
+  margin-top: 1rem;
+}
+
+.complex-features__feature:not(:last-child) {
+  margin-bottom: .5rem;
+}
+
+.complex-features__label {
+  width: 50%;
+  margin: 0px;
+  color: #a9afb6;
+}
+
+.complex-features__value {
+  width: 50%;
+  margin: 0px;
+  font-weight: 500;
+  color: #3e4247;
+}
+
+.complex-desc {
+  margin-top: 3rem;
+}
+
+.complex-desc__text {
+  color: #3e4247;
+  line-height: 1.5rem;
+  white-space: pre-wrap;
+}
+
+.complex-infrastructure {
+  margin-bottom: 2.5rem;
+}
+
+.complex-infrastructure__text {
+  margin: 0px;
+  color: #3e4247;
+}
+
+.complex-infrastructure__text:first-child {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.complex-offers {
+  background-color: #f4f5f9;
+  padding: 4rem 0px;
+}
+
+.complex-offers .complex-heading {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.complex-offers__card {
+  padding: 1.5rem 2rem;
+  background-color: #fff;
+}
+
+.complex-offers__heading {
+  margin: 0px;
+  font-family: "Philosopher", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.375rem
+}
+
+.complex-offers__feature {
+  margin-top: 1.5rem;
+}
+
+.complex-offers__label {
+  margin: 0px;
+  color: #a9afb6;
+  margin-bottom: .625rem;
+}
+
+.complex-offers__value {
+  margin: 0px;
+  color: #3e4247;
+}
+
+.complex-offers__button-wrapper {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.complex-offers__button {
+  cursor: pointer;
+  background-color: #000;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  padding: .75rem 2rem;
+  margin-top: 1rem;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1rem;
+}
+
+.guide {
+  padding-top: 2rem;
+  padding-bottom: 13.625rem;
+  background-color: #3e4247;
+}
+
+.guide__district {
+  font-family: "Philosopher", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a9afb6;
+  margin-bottom: 3rem;
+}
+
+.guide__title {
+  font-family: "Philosopher", serif;
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 3.75rem;
+  color: #ffffff;
+}
+
+.guide__link {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: left;
+  color: #00779a;
+  margin-top: 3rem;
+}
+
+.guide__link::after {
+  content: url(img/arrow-blue.svg);
+  margin-left: .5rem;
+}
+
+.guide__photo {
+  width: 100%;
+}
+
+.complex-location {
+  padding-bottom: 4rem;
+  background-color: #fff;
+}
+
+.complex-location__map {
+  width: 100%;
+  height: 302px;
+  margin-top: -9.5rem;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
+          box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
+}
+
+.complex-location__nearby-places {
+  margin-top: -9.5rem;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
+          box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
+  background-color: #fff;
+}
+
+.nearby-place {
+  padding: 1.5rem;
+}
+
+.nearby-place:not(:last-child) {
+  border-bottom: 1px solid #e0e0e1;
+}
+
+.nearby-place__name {
+  margin: 0;
+  font-weight: 500;
+  color: #3e4247;
+}
+
+.nearby-place__distance {
+  margin-top: .5rem;
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #a9afb6;
+}
+
+.footer {
   background-color: #111;
   color: #a9afb6;
   padding: 2rem 0px;
@@ -150,23 +433,23 @@ body {
   font-weight: 300;
 }
 
-.main-footer__title {
+.footer__title {
   font-weight: 700;
   color: #646971;
   margin: 0px;
 }
 
-.main-footer__info {
+.footer__info {
   margin-top: .5rem;
   margin-bottom: 0px;
 }
 
-.main-footer__info_phone {
+.footer__info_phone {
   margin-top: 1rem;
   margin-bottom: 0px;
 }
 
-.main-footer__menu {
+.footer__menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -176,7 +459,7 @@ body {
       flex-direction: column;
 }
 
-.main-footer__link {
+.footer__link {
   display: inline-block;
   font-weight: 300;
   color: #fff;
@@ -184,16 +467,16 @@ body {
   margin-top: 8px;
 }
 
-.main-footer__link_all {
+.footer__link_all {
   margin-top: 1rem;
 }
 
-.main-footer__link_all::after {
+.footer__link_all::after {
   content: url(img/arrow.svg);
   margin-left: .5rem;
 }
 
-.main-footer__border {
+.footer__border {
   border: 0;
   height: 2px;
   background-color: #646971;
@@ -201,7 +484,7 @@ body {
   margin-bottom: 16px;
 }
 
-.main-footer__legal {
+.footer__legal {
   padding-top: 6rem;
   margin: 0px;
   font-size: .687rem;
