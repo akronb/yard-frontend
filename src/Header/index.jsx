@@ -8,7 +8,7 @@ export default () => {
       <Grid>
         <div className="header__wrapper">
           <a href="">
-            <img className="header__logo" src={logo} alt="Compass logotype"/>
+            <img className="header__logo" src={logo} alt="Compass logotype" />
           </a>
           <nav>
             <a className="header__link" href="">Купить</a>
@@ -19,4 +19,4 @@ export default () => {
       </Grid>
     </header>
   );
-}
+};
