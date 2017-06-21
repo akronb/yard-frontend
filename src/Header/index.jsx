@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Grid } from 'react-flexbox-grid';
 import logo from '../img/compass-logo.svg';
@@ -21,7 +22,7 @@ const Logo = styled.img`
   height: 24px;
 `;
 
-const Link = styled.a`
+const MenuLink = styled(Link)`
   display: inline-block;
   color: #3e4247;
   text-decoration: none;
@@ -36,13 +37,13 @@ export default () => {
     <Header>
       <Grid>
         <Wrapper>
-          <a href="">
+          <Link to="/">
             <Logo src={logo} alt="Compass logotype" />
-          </a>
+          </Link>
           <nav>
-            <Link href="">Купить</Link>
-            <Link href="">Снять</Link>
-            <Link href="">Наши агенты</Link>
+            <MenuLink to="#">Купить</MenuLink>
+            <MenuLink to="#">Снять</MenuLink>
+            <MenuLink to="#">Наши агенты</MenuLink>
           </nav>
         </Wrapper>
       </Grid>

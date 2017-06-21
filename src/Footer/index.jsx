@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { css } from 'styled-components';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import arrowImg from '../img/arrow.svg';
 
@@ -30,7 +32,7 @@ const Line = styled.hr`
   height: 2px;
   background-color: #646971;
   margin-top: 0px;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 `;
 
 const Menu = styled.nav`
@@ -38,20 +40,20 @@ const Menu = styled.nav`
   flex-direction: column;
 `;
 
-const Link = styled.a`
+const MenuLink = styled(Link)`
   display: inline-block;
   font-weight: 300;
   color: #fff;
   text-decoration: none;
-  margin-top: 8px;
-`;
-
-const LinkBig = Link.extend`
-  margin-top: 1rem;
-  &:after {
-  content: url(${arrowImg});
-  margin-left: .5rem;
-  }
+  margin-top: ${props => (props.primary ? '1rem' : '.5rem')};
+  ${props =>
+    props.primary &&
+    css`
+    &:after {
+    content: url(${arrowImg});
+    margin-left: .5rem;
+    }
+  `}
 `;
 
 const Legal = styled.p`
@@ -77,20 +79,20 @@ export default () => {
             <Line />
             <Title>Жилые комплексы</Title>
             <Menu>
-              <Link href="">ВТБ Арена Парк</Link>
-              <Link href="">Садовые кварталы</Link>
-              <Link href="">Резиденция Монэ</Link>
-              <LinkBig href="">
+              <MenuLink to="#">ВТБ Арена Парк</MenuLink>
+              <MenuLink to="#">Садовые кварталы</MenuLink>
+              <MenuLink to="#">Резиденция Монэ</MenuLink>
+              <MenuLink primary to="#">
                 Все ЖК Москвы
-              </LinkBig>
+              </MenuLink>
             </Menu>
           </Col>
           <Col lg={2}>
             <Line />
             <Title>Компания</Title>
             <Menu>
-              <Link href="">Команда</Link>
-              <Link href="">О компании</Link>
+              <MenuLink to="#">Команда</MenuLink>
+              <MenuLink to="#">О компании</MenuLink>
             </Menu>
           </Col>
         </Row>

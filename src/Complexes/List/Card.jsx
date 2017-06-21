@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Card = styled.a`
+const Card = styled(Link)`
   display: flex;
   justify-content: space-between;
   margin: 3rem auto 0px;
@@ -55,7 +56,7 @@ const Description = styled.p`
 
 export default props => {
   return (
-    <Card href="">
+    <Card to={'/complexes/' + props.id}>
       <Preview
         src={
           process.env.PUBLIC_URL + '/img/appartment-preview' + props.id + '.jpg'
