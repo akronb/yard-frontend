@@ -6,8 +6,6 @@ import Footer from './Footer';
 import Complexes from './Complexes/List';
 import Complex from './Complexes/Show';
 
-import './complex.css';
-
 class App extends Component {
   render() {
     return (
