@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Preview from './Preview';
 
 const Card = styled(Link)`
   display: flex;
@@ -15,12 +16,6 @@ const Card = styled(Link)`
   &:last-child {
     margin-bottom: 6rem;
   }
-`;
-
-const Preview = styled.img`
-  width: 484px;
-  height: 350px;
-  flex-shrink: 0;
 `;
 
 const Info = styled.div`
@@ -56,23 +51,12 @@ const Description = styled.p`
 
 export default props => {
   return (
-    <Card to={'/complexes/' + props.id}>
-      <Preview
-        src={
-          process.env.PUBLIC_URL + '/img/appartment-preview' + props.id + '.jpg'
-        }
-        srcset={
-          process.env.PUBLIC_URL +
-          '/img/appartment-preview' +
-          props.id +
-          '@2x.jpg 2x'
-        }
-        alt={props.name}
-      />
+    <Card to={`/complexes/${props.id}`}>
+      <Preview id={props.id} name={props.name} />
       <Info>
         <Location>{props.location}</Location>
         <Name>{props.name}</Name>
-        <Description>{props.desc}</Description>
+        <Description>{props.children}</Description>
       </Info>
     </Card>
   );
