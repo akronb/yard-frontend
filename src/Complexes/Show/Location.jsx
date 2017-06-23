@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   background-color: #fff;
 `;
 
-const Map = styled.img`
+const Location = styled.img`
   width: 100%;
   height: 302px;
   margin-top: -9.75rem;
@@ -46,8 +46,7 @@ export default () => {
       <Grid>
         <Row>
           <Col lg={6}>
-            <Map
-              className="complex-location__map"
+            <Location
               src={`${process.env.PUBLIC_URL}/img/map.png`}
               alt="Жилой комплекс «Полянка/44»"
             />
