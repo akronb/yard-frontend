@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import SeparationLine from './SeparationLine';
 import Heading from './Heading';
 
 const Wrapper = styled.section`
@@ -60,6 +61,7 @@ export default () => {
             </article>
           </Col>
         </Row>
+        <SeparationLine />
       </Grid>
     </Wrapper>
   );

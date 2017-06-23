@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import SeparationLine from './SeparationLine';
 import Heading from './Heading';
 
 const Wrapper = styled.div`
@@ -41,6 +42,7 @@ export default () => {
           <Subheading>застройщик</Subheading>
         </Fact>
       </Wrapper>
+      <SeparationLine />
     </Grid>
   );
 };

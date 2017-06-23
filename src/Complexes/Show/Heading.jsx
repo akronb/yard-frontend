@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Heading = styled.div`
+export default styled.h2`
   margin: 0px;
   font-family: "Philosopher", serif;
   font-weight: 700;
@@ -9,7 +9,3 @@ const Heading = styled.div`
   line-height: 27px;
   color: #3e4247;
 `;
-
-export default props => {
-  return <Heading {...props}>{props.children}</Heading>;
-};
