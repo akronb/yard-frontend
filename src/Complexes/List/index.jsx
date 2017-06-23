@@ -1,13 +1,17 @@
-import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import React from "react";
+import { Grid, Row, Col } from "react-flexbox-grid";
+import { Helmet } from "react-helmet";
 
-import Hero from './Hero';
-import Intro from './Intro';
-import Card from './Card';
+import Hero from "./Hero";
+import Intro from "./Intro";
+import Card from "./Card";
 
 export default () => {
   return (
-    <div>
+    <main>
+      <Helmet>
+        <title>Our Developments | Compass</title>
+      </Helmet>
       <Hero />
       <Intro />
       <Grid>
@@ -28,14 +32,14 @@ export default () => {
           proportioned."
         </Card>
         <Card id={3} location="NOLITA, MANHATTAN" name="152 Elizabeth">
-          "152 Elizabeth is an ultra-luxury condominium building—the
+          152 Elizabeth is an ultra-luxury condominium building—the
           first in New York City designed by Japanese master architect
           Tadao Ando. Located at the corner of Kenmare and Elizabeth
           Streets in Nolita, the 32,000-square-foot building will stand
           as a profound architectural statement and embrace the
-          industrial character of the neighborhood."
+          industrial character of the neighborhood.
         </Card>
       </Grid>
-    </div>
+    </main>
   );
 };
