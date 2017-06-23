@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Preview from './Preview';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+import Image from "../../Image";
 
 const Card = styled(Link)`
   display: flex;
@@ -16,6 +17,12 @@ const Card = styled(Link)`
   &:last-child {
     margin-bottom: 6rem;
   }
+`;
+
+const Preview = styled(Image)`
+  width: 484px;
+  height: 350px;
+  flex-shrink: 0;
 `;
 
 const Info = styled.div`
@@ -52,7 +59,11 @@ const Description = styled.p`
 export default props => {
   return (
     <Card to={`/complexes/${props.id}`}>
-      <Preview id={props.id} name={props.name} />
+      <Preview
+        x1={`appartment-preview${props.id}.jpg`}
+        x2={`appartment-preview${props.id}@2x.jpg`}
+        title={props.name}
+      />
       <Info>
         <Location>{props.location}</Location>
         <Name>{props.name}</Name>
