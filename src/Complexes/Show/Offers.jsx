@@ -67,67 +67,49 @@ export default () => {
         <Row>
           <Col lg={4}>
             <Card>
-              <CardTitle>
-                1-комнатные квартиры
-              </CardTitle>
+              <CardTitle>1-комнатные квартиры</CardTitle>
               <Feature>
                 <Label>Площадь</Label>
                 <Value>от 59 до 120 м²</Value>
               </Feature>
               <Feature>
                 <Label>Стоимость</Label>
-                <Value>
-                  от 20.3 до 84.2 млн руб
-                </Value>
+                <Value>от 20.3 до 84.2 млн руб</Value>
               </Feature>
               <ButtonWrapper>
-                <Button>
-                  Посмотреть предложения
-                </Button>
+                <Button>Посмотреть предложения</Button>
               </ButtonWrapper>
             </Card>
           </Col>
           <Col lg={4}>
             <Card>
-              <CardTitle>
-                2-комнатные квартиры
-              </CardTitle>
+              <CardTitle>2-комнатные квартиры</CardTitle>
               <Feature>
                 <Label>Площадь</Label>
                 <Value>от 59 до 120 м²</Value>
               </Feature>
               <Feature>
                 <Label>Стоимость</Label>
-                <Value>
-                  от 20.3 до 84.2 млн руб
-                </Value>
+                <Value>от 20.3 до 84.2 млн руб</Value>
               </Feature>
               <ButtonWrapper>
-                <Button>
-                  Посмотреть предложения
-                </Button>
+                <Button>Посмотреть предложения</Button>
               </ButtonWrapper>
             </Card>
           </Col>
           <Col lg={4}>
             <Card>
-              <CardTitle>
-                3-комнатные квартиры
-              </CardTitle>
+              <CardTitle>3-комнатные квартиры</CardTitle>
               <Feature>
                 <Label>Площадь</Label>
                 <Value>от 59 до 120 м²</Value>
               </Feature>
               <Feature>
                 <Label>Стоимость</Label>
-                <Value>
-                  от 20.3 до 84.2 млн руб
-                </Value>
+                <Value>от 20.3 до 84.2 млн руб</Value>
               </Feature>
               <ButtonWrapper>
-                <Button>
-                  Посмотреть предложения
-                </Button>
+                <Button>Посмотреть предложения</Button>
               </ButtonWrapper>
             </Card>
           </Col>
