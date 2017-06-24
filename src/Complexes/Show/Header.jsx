@@ -39,20 +39,18 @@ const Button = styled.button`
   line-height: .625rem;
 `;
 
-export default () => {
-  return (
-    <Grid>
-      <Wrapper>
-        <div>
-          <Name>
+export default () => (
+  <Grid>
+    <Wrapper>
+      <div>
+        <Name>
             Жилой комплекс «Полянка/44»
           </Name>
-          <Location>
+        <Location>
             Район Якиманка, улица Большая Полянка, дом 44 • 119180
           </Location>
-        </div>
-        <Button>В избранное</Button>
-      </Wrapper>
-    </Grid>
+      </div>
+      <Button>В избранное</Button>
+    </Wrapper>
+  </Grid>
   );
-};

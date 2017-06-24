@@ -15,41 +15,39 @@ const Text = styled.p`
   color: #3e4247;
 `;
 
-export default () => {
-  return (
-    <Grid>
-      <Heading>Инфраструктура</Heading>
-      <Wrapper>
-        <Row>
-          <Col lg={2}>
-            <Text>Бассейн</Text>
-          </Col>
-          <Col lg={2}>
-            <Text>Частная школа</Text>
-          </Col>
-          <Col lg={2}>
-            <Text>Детский сад</Text>
-          </Col>
-          <Col lg={2}>
-            <Text>Бассейн</Text>
-          </Col>
-          <Col lg={2}>
-            <Text>Частная школа</Text>
-          </Col>
-          <Col lg={2}>
-            <Text>Детский сад</Text>
-          </Col>
-          <Col lg={2}>
-            <Text>Частная школа</Text>
-          </Col>
-          <Col lg={2}>
-            <Text>Частная школа</Text>
-          </Col>
-          <Col lg={2}>
-            <Text>Частная школа</Text>
-          </Col>
-        </Row>
-      </Wrapper>
-    </Grid>
+export default () => (
+  <Grid>
+    <Heading>Инфраструктура</Heading>
+    <Wrapper>
+      <Row>
+        <Col lg={2}>
+          <Text>Бассейн</Text>
+        </Col>
+        <Col lg={2}>
+          <Text>Частная школа</Text>
+        </Col>
+        <Col lg={2}>
+          <Text>Детский сад</Text>
+        </Col>
+        <Col lg={2}>
+          <Text>Бассейн</Text>
+        </Col>
+        <Col lg={2}>
+          <Text>Частная школа</Text>
+        </Col>
+        <Col lg={2}>
+          <Text>Детский сад</Text>
+        </Col>
+        <Col lg={2}>
+          <Text>Частная школа</Text>
+        </Col>
+        <Col lg={2}>
+          <Text>Частная школа</Text>
+        </Col>
+        <Col lg={2}>
+          <Text>Частная школа</Text>
+        </Col>
+      </Row>
+    </Wrapper>
+  </Grid>
   );
-};

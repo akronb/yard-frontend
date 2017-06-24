@@ -59,62 +59,60 @@ const Button = styled.button`
   font-size: 1rem;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Grid>
-        <Title>Предложения в ЖК «Полянка/44»</Title>
-        <Row>
-          <Col lg={4}>
-            <Card>
-              <CardTitle>1-комнатные квартиры</CardTitle>
-              <Feature>
-                <Label>Площадь</Label>
-                <Value>от 59 до 120 м²</Value>
-              </Feature>
-              <Feature>
-                <Label>Стоимость</Label>
-                <Value>от 20.3 до 84.2 млн руб</Value>
-              </Feature>
-              <ButtonWrapper>
-                <Button>Посмотреть предложения</Button>
-              </ButtonWrapper>
-            </Card>
-          </Col>
-          <Col lg={4}>
-            <Card>
-              <CardTitle>2-комнатные квартиры</CardTitle>
-              <Feature>
-                <Label>Площадь</Label>
-                <Value>от 59 до 120 м²</Value>
-              </Feature>
-              <Feature>
-                <Label>Стоимость</Label>
-                <Value>от 20.3 до 84.2 млн руб</Value>
-              </Feature>
-              <ButtonWrapper>
-                <Button>Посмотреть предложения</Button>
-              </ButtonWrapper>
-            </Card>
-          </Col>
-          <Col lg={4}>
-            <Card>
-              <CardTitle>3-комнатные квартиры</CardTitle>
-              <Feature>
-                <Label>Площадь</Label>
-                <Value>от 59 до 120 м²</Value>
-              </Feature>
-              <Feature>
-                <Label>Стоимость</Label>
-                <Value>от 20.3 до 84.2 млн руб</Value>
-              </Feature>
-              <ButtonWrapper>
-                <Button>Посмотреть предложения</Button>
-              </ButtonWrapper>
-            </Card>
-          </Col>
-        </Row>
-      </Grid>
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <Grid>
+      <Title>Предложения в ЖК «Полянка/44»</Title>
+      <Row>
+        <Col lg={4}>
+          <Card>
+            <CardTitle>1-комнатные квартиры</CardTitle>
+            <Feature>
+              <Label>Площадь</Label>
+              <Value>от 59 до 120 м²</Value>
+            </Feature>
+            <Feature>
+              <Label>Стоимость</Label>
+              <Value>от 20.3 до 84.2 млн руб</Value>
+            </Feature>
+            <ButtonWrapper>
+              <Button>Посмотреть предложения</Button>
+            </ButtonWrapper>
+          </Card>
+        </Col>
+        <Col lg={4}>
+          <Card>
+            <CardTitle>2-комнатные квартиры</CardTitle>
+            <Feature>
+              <Label>Площадь</Label>
+              <Value>от 59 до 120 м²</Value>
+            </Feature>
+            <Feature>
+              <Label>Стоимость</Label>
+              <Value>от 20.3 до 84.2 млн руб</Value>
+            </Feature>
+            <ButtonWrapper>
+              <Button>Посмотреть предложения</Button>
+            </ButtonWrapper>
+          </Card>
+        </Col>
+        <Col lg={4}>
+          <Card>
+            <CardTitle>3-комнатные квартиры</CardTitle>
+            <Feature>
+              <Label>Площадь</Label>
+              <Value>от 59 до 120 м²</Value>
+            </Feature>
+            <Feature>
+              <Label>Стоимость</Label>
+              <Value>от 20.3 до 84.2 млн руб</Value>
+            </Feature>
+            <ButtonWrapper>
+              <Button>Посмотреть предложения</Button>
+            </ButtonWrapper>
+          </Card>
+        </Col>
+      </Row>
+    </Grid>
+  </Wrapper>
   );
-};

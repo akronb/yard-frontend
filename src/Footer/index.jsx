@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import arrowImg from '../img/arrow.svg';
 
@@ -64,49 +63,46 @@ const Legal = styled.p`
   line-height: 1.15rem;
 `;
 
-export default () => {
-  return (
-    <Footer>
-      <Grid>
-        <Row>
-          <Col lg={2}>
-            <Title>ООО «Ярд»</Title>
-            <Info>ОГРН 1175074002531</Info>
-            <Info>ИНН 5036165365</Info>
-            <Info>+7 (999) 821-14-88</Info>
-          </Col>
-          <Col lgOffset={2} lg={2}>
-            <Line />
-            <Title>Жилые комплексы</Title>
-            <Menu>
-              <MenuLink to="#">ВТБ Арена Парк</MenuLink>
-              <MenuLink to="#">Садовые кварталы</MenuLink>
-              <MenuLink to="#">Резиденция Монэ</MenuLink>
-              <MenuLink primary to="#">
-                Все ЖК Москвы
-              </MenuLink>
-            </Menu>
-          </Col>
-          <Col lg={2}>
-            <Line />
-            <Title>Компания</Title>
-            <Menu>
-              <MenuLink to="#">Команда</MenuLink>
-              <MenuLink to="#">О компании</MenuLink>
-            </Menu>
-          </Col>
-        </Row>
-        <Row>
-          <Col lgOffset={4} lg={8}>
-            <Legal>
-              Любая информация, представленная на данном сайте, носит
-              исключительно информационный характер и ни при каких условиях не
-              является публичной офертой, определяемой положениями статьи 437 ГК
-              РФ. © ООО «Ярд», 2017
-            </Legal>
-          </Col>
-        </Row>
-      </Grid>
-    </Footer>
-  );
-};
+export default () =>
+  (<Footer>
+    <Grid>
+      <Row>
+        <Col lg={2}>
+          <Title>ООО «Ярд»</Title>
+          <Info>ОГРН 1175074002531</Info>
+          <Info>ИНН 5036165365</Info>
+          <Info>+7 (999) 821-14-88</Info>
+        </Col>
+        <Col lgOffset={2} lg={2}>
+          <Line />
+          <Title>Жилые комплексы</Title>
+          <Menu>
+            <MenuLink to="#">ВТБ Арена Парк</MenuLink>
+            <MenuLink to="#">Садовые кварталы</MenuLink>
+            <MenuLink to="#">Резиденция Монэ</MenuLink>
+            <MenuLink primary to="#">
+              Все ЖК Москвы
+            </MenuLink>
+          </Menu>
+        </Col>
+        <Col lg={2}>
+          <Line />
+          <Title>Компания</Title>
+          <Menu>
+            <MenuLink to="#">Команда</MenuLink>
+            <MenuLink to="#">О компании</MenuLink>
+          </Menu>
+        </Col>
+      </Row>
+      <Row>
+        <Col lgOffset={4} lg={8}>
+          <Legal>
+            Любая информация, представленная на данном сайте, носит
+            исключительно информационный характер и ни при каких условиях не
+            является публичной офертой, определяемой положениями статьи 437 ГК
+            РФ. © ООО «Ярд», 2017
+          </Legal>
+        </Col>
+      </Row>
+    </Grid>
+  </Footer>);

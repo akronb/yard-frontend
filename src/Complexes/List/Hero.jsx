@@ -16,12 +16,9 @@ const Logo = styled.img`
   height: 131px;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Grid>
-        <Logo src={developLogoImg} alt="Compass Development logotype" />
-      </Grid>
-    </Wrapper>
-  );
-};
+export default () =>
+  (<Wrapper>
+    <Grid>
+      <Logo src={developLogoImg} alt="Compass Development logotype" />
+    </Grid>
+  </Wrapper>);

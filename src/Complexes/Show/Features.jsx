@@ -30,54 +30,52 @@ const Value = styled.dt`
   color: #3e4247;
 `;
 
-export default () => {
-  return (
-    <Grid>
-      <Heading>Характеристики</Heading>
-      <Row>
-        <Col lg={4}>
-          <Feature>
-            <Label>Количество квартир:</Label>
-            <Value>1 503</Value>
-          </Feature>
-          <Feature>
-            <Label>Статус:</Label>
-            <Value>Квартиры</Value>
-          </Feature>
-          <Feature>
-            <Label>Цены:</Label>
-            <Value>от 5.3 до 143.5 млн</Value>
-          </Feature>
-        </Col>
-        <Col lg={4}>
-          <Feature>
-            <Label>Количество квартир:</Label>
-            <Value>1 503</Value>
-          </Feature>
-          <Feature>
-            <Label>Количество квартир:</Label>
-            <Value>1 503</Value>
-          </Feature>
-          <Feature>
-            <Label>Количество квартир:</Label>
-            <Value>1 503</Value>
-          </Feature>
-        </Col>
-        <Col lg={4}>
-          <Feature>
-            <Label>Количество квартир:</Label>
-            <Value>1 503</Value>
-          </Feature>
-          <Feature>
-            <Label>Количество квартир:</Label>
-            <Value>1 503</Value>
-          </Feature>
-          <Feature>
-            <Label>Количество квартир:</Label>
-            <Value>1 503</Value>
-          </Feature>
-        </Col>
-      </Row>
-    </Grid>
+export default () => (
+  <Grid>
+    <Heading>Характеристики</Heading>
+    <Row>
+      <Col lg={4}>
+        <Feature>
+          <Label>Количество квартир:</Label>
+          <Value>1 503</Value>
+        </Feature>
+        <Feature>
+          <Label>Статус:</Label>
+          <Value>Квартиры</Value>
+        </Feature>
+        <Feature>
+          <Label>Цены:</Label>
+          <Value>от 5.3 до 143.5 млн</Value>
+        </Feature>
+      </Col>
+      <Col lg={4}>
+        <Feature>
+          <Label>Количество квартир:</Label>
+          <Value>1 503</Value>
+        </Feature>
+        <Feature>
+          <Label>Количество квартир:</Label>
+          <Value>1 503</Value>
+        </Feature>
+        <Feature>
+          <Label>Количество квартир:</Label>
+          <Value>1 503</Value>
+        </Feature>
+      </Col>
+      <Col lg={4}>
+        <Feature>
+          <Label>Количество квартир:</Label>
+          <Value>1 503</Value>
+        </Feature>
+        <Feature>
+          <Label>Количество квартир:</Label>
+          <Value>1 503</Value>
+        </Feature>
+        <Feature>
+          <Label>Количество квартир:</Label>
+          <Value>1 503</Value>
+        </Feature>
+      </Col>
+    </Row>
+  </Grid>
   );
-};

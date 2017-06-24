@@ -25,24 +25,21 @@ const Fact = styled(Heading)`
   }
 `;
 
-export default () => {
-  return (
-    <Grid>
-      <Wrapper>
-        <Fact>
-          950
-          <Subheading>предложений</Subheading>
-        </Fact>
-        <Fact>
-          John McAslan + Partners
-          <Subheading>архитектор</Subheading>
-        </Fact>
-        <Fact>
-          Группа «ПСН»
-          <Subheading>застройщик</Subheading>
-        </Fact>
-      </Wrapper>
-      <SeparationLine />
-    </Grid>
-  );
-};
+export default () =>
+  (<Grid>
+    <Wrapper>
+      <Fact>
+        950
+        <Subheading>предложений</Subheading>
+      </Fact>
+      <Fact>
+        John McAslan + Partners
+        <Subheading>архитектор</Subheading>
+      </Fact>
+      <Fact>
+        Группа «ПСН»
+        <Subheading>застройщик</Subheading>
+      </Fact>
+    </Wrapper>
+    <SeparationLine />
+  </Grid>);

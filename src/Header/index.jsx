@@ -32,21 +32,19 @@ const MenuLink = styled(Link)`
   }
 `;
 
-export default () => {
-  return (
-    <Header>
-      <Grid>
-        <Wrapper>
-          <Link to="/">
-            <Logo src={logo} alt="Compass logotype" />
-          </Link>
-          <nav>
-            <MenuLink to="#">Купить</MenuLink>
-            <MenuLink to="#">Снять</MenuLink>
-            <MenuLink to="#">Наши агенты</MenuLink>
-          </nav>
-        </Wrapper>
-      </Grid>
-    </Header>
+export default () => (
+  <Header>
+    <Grid>
+      <Wrapper>
+        <Link to="/">
+          <Logo src={logo} alt="Compass logotype" />
+        </Link>
+        <nav>
+          <MenuLink to="#">Купить</MenuLink>
+          <MenuLink to="#">Снять</MenuLink>
+          <MenuLink to="#">Наши агенты</MenuLink>
+        </nav>
+      </Wrapper>
+    </Grid>
+  </Header>
   );
-};

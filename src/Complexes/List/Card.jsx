@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import Image from "../../Image";
+import Image from '../../Image';
 
 const Card = styled(Link)`
   display: flex;
@@ -56,19 +56,16 @@ const Description = styled.p`
   color: #3e4247;
 `;
 
-export default props => {
-  return (
-    <Card to={`/complexes/${props.id}`}>
-      <Preview
-        x1={`appartment-preview${props.id}.jpg`}
-        x2={`appartment-preview${props.id}@2x.jpg`}
-        title={props.name}
-      />
-      <Info>
-        <Location>{props.location}</Location>
-        <Name>{props.name}</Name>
-        <Description>{props.children}</Description>
-      </Info>
-    </Card>
-  );
-};
+export default props =>
+  (<Card to={`/complexes/${props.id}`}>
+    <Preview
+      x1={`appartment-preview${props.id}.jpg`}
+      x2={`appartment-preview${props.id}@2x.jpg`}
+      title={props.name}
+    />
+    <Info>
+      <Location>{props.location}</Location>
+      <Name>{props.name}</Name>
+      <Description>{props.children}</Description>
+    </Info>
+  </Card>);

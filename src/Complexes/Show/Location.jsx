@@ -40,35 +40,33 @@ const Distance = styled.p`
   color: #a9afb6;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Grid>
-        <Row>
-          <Col lg={6}>
-            <Location
-              src={`${process.env.PUBLIC_URL}/img/map.png`}
-              alt="Жилой комплекс «Полянка/44»"
-            />
-          </Col>
-          <Col lg={6}>
-            <Places>
-              <Place>
-                <Name>Красный Октябрь</Name>
-                <Distance>24 минуты, 6 км</Distance>
-              </Place>
-              <Place>
-                <Name>World class</Name>
-                <Distance>2 минуты, 300 м</Distance>
-              </Place>
-              <Place>
-                <Name>Третьяковская галерея</Name>
-                <Distance>14 минут, 4 км</Distance>
-              </Place>
-            </Places>
-          </Col>
-        </Row>
-      </Grid>
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <Grid>
+      <Row>
+        <Col lg={6}>
+          <Location
+            src={`${process.env.PUBLIC_URL}/img/map.png`}
+            alt="Жилой комплекс «Полянка/44»"
+          />
+        </Col>
+        <Col lg={6}>
+          <Places>
+            <Place>
+              <Name>Красный Октябрь</Name>
+              <Distance>24 минуты, 6 км</Distance>
+            </Place>
+            <Place>
+              <Name>World class</Name>
+              <Distance>2 минуты, 300 м</Distance>
+            </Place>
+            <Place>
+              <Name>Третьяковская галерея</Name>
+              <Distance>14 минут, 4 км</Distance>
+            </Place>
+          </Places>
+        </Col>
+      </Row>
+    </Grid>
+  </Wrapper>
   );
-};

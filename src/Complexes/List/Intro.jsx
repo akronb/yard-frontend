@@ -33,25 +33,22 @@ const Button = styled.button`
   font-size: 1rem;
 `;
 
-export default () => {
-  return (
-    <Intro>
-      <Grid>
-        <Row center="lg">
-          <Col lg={8}>
-            <Title>Discover Our New Developments</Title>
-            <Text>
-              Compass brings a modern approach to new development marketing
-              and sales. From boutique rental conversions to luxurious
-              ground-up condominiums, browse our portfolio of current
-              offerings.
-            </Text>
-            <Button type="button" name="button">
-              Contact The Team
-            </Button>
-          </Col>
-        </Row>
-      </Grid>
-    </Intro>
-  );
-};
+export default () =>
+  (<Intro>
+    <Grid>
+      <Row center="lg">
+        <Col lg={8}>
+          <Title>Discover Our New Developments</Title>
+          <Text>
+            Compass brings a modern approach to new development marketing
+            and sales. From boutique rental conversions to luxurious
+            ground-up condominiums, browse our portfolio of current
+            offerings.
+          </Text>
+          <Button type="button" name="button">
+            Contact The Team
+          </Button>
+        </Col>
+      </Row>
+    </Grid>
+  </Intro>);

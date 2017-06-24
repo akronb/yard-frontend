@@ -33,19 +33,17 @@ const Button = styled.button`
   color: #fff;
 `;
 
-export default () => {
-  return (
-    <Carousel>
-      <Wrapper>
-        <Photo src={`${process.env.PUBLIC_URL}/img/slider-1.png`} />
-        <Photo src={`${process.env.PUBLIC_URL}/img/slider-2.png`} />
-        <Photo src={`${process.env.PUBLIC_URL}/img/slider-3.png`} />
-        <Photo src={`${process.env.PUBLIC_URL}/img/slider-4.png`} />
-        <Photo src={`${process.env.PUBLIC_URL}/img/slider-5.png`} />
-      </Wrapper>
-      <Grid>
-        <Button>41 фотография</Button>
-      </Grid>
-    </Carousel>
+export default () => (
+  <Carousel>
+    <Wrapper>
+      <Photo src={`${process.env.PUBLIC_URL}/img/slider-1.png`} />
+      <Photo src={`${process.env.PUBLIC_URL}/img/slider-2.png`} />
+      <Photo src={`${process.env.PUBLIC_URL}/img/slider-3.png`} />
+      <Photo src={`${process.env.PUBLIC_URL}/img/slider-4.png`} />
+      <Photo src={`${process.env.PUBLIC_URL}/img/slider-5.png`} />
+    </Wrapper>
+    <Grid>
+      <Button>41 фотография</Button>
+    </Grid>
+  </Carousel>
   );
-};
