@@ -12,6 +12,7 @@
     "styled-components": "^2.1.0"
   },
   "devDependencies": {
+    "eslint": "^4.1.1",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
@@ -20,7 +21,7 @@
     "react-scripts": "1.0.7"
   },
   "scripts": {
-    "prepush": "eslint .src/ --ext .js,.jsx",
+    "precommit": "eslint src/ --ext .js,.jsx",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
