@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import arrowImg from '../img/arrow.svg';
 
@@ -44,15 +44,15 @@ const MenuLink = styled(Link)`
   font-weight: 300;
   color: #fff;
   text-decoration: none;
-  margin-top: ${props => (props.primary ? '1rem' : '.5rem')};
-  ${props =>
-    props.primary &&
-    css`
-    &:after {
+  margin-top: .5rem;
+`;
+
+const MenuLinkArrow = MenuLink.extend`
+  margin-top: 1rem;
+  &:after {
     content: url(${arrowImg});
     margin-left: .5rem;
-    }
-  `}
+  }
 `;
 
 const Legal = styled.p`
@@ -80,9 +80,9 @@ export default () =>
             <MenuLink to="#">ВТБ Арена Парк</MenuLink>
             <MenuLink to="#">Садовые кварталы</MenuLink>
             <MenuLink to="#">Резиденция Монэ</MenuLink>
-            <MenuLink primary to="#">
+            <MenuLinkArrow to="#">
               Все ЖК Москвы
-            </MenuLink>
+            </MenuLinkArrow>
           </Menu>
         </Col>
         <Col lg={2}>
