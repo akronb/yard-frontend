@@ -18,23 +18,45 @@ const Wrapper = styled.div`
   background: #fff;
 `;
 
-export default () => (
-  <main>
-    <Helmet>
-      <title>Жилой комплекс «Полянка/44» | Compass</title>
-    </Helmet>
-    <Wrapper>
-      <Header />
-    </Wrapper>
-    <Carousel />
-    <Wrapper>
-      <Facts />
-      <Features />
-      <Description />
-      <Infrastructure />
-    </Wrapper>
-    <Offers />
-    <Guide />
-    <Location />
-  </main>
-  );
+class Show extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    fetch(`https://api.jqestate.ru/v1/complexes/${this.props.match.params.id}`)
+      .then(responce => responce.json())
+      .then((json) => {
+        this.setState(json);
+      });
+  }
+
+  render() {
+    console.log(this.state);
+    const { name, location = [], images = [], statistics = [] } = this.state;
+
+    return (
+      <main>
+        <Helmet>
+          <title>{`${name} | Compass`}</title>
+        </Helmet>
+        <Wrapper>
+          <Header name={name} location={location} />
+        </Wrapper>
+        <Carousel imageList={images} />
+        <Wrapper>
+          <Facts />
+          <Features propCount={statistics.propertiesCount} />
+          <Description />
+          <Infrastructure />
+        </Wrapper>
+        <Offers />
+        <Guide />
+        <Location />
+      </main>
+    );
+  }
+}
+
+export default Show;

@@ -33,17 +33,14 @@ const Button = styled.button`
   color: #fff;
 `;
 
-export default () => (
-  <Carousel>
+export default props =>
+  (<Carousel>
     <Wrapper>
-      <Photo src={`${process.env.PUBLIC_URL}/img/slider-1.png`} />
-      <Photo src={`${process.env.PUBLIC_URL}/img/slider-2.png`} />
-      <Photo src={`${process.env.PUBLIC_URL}/img/slider-3.png`} />
-      <Photo src={`${process.env.PUBLIC_URL}/img/slider-4.png`} />
-      <Photo src={`${process.env.PUBLIC_URL}/img/slider-5.png`} />
+      {props.imageList.map(data =>
+        <Photo src={`https://images.jqestate.ru/${data.id}-jqestate-512`} />,
+      )}
     </Wrapper>
     <Grid>
       <Button>41 фотография</Button>
     </Grid>
-  </Carousel>
-  );
+  </Carousel>);
