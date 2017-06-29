@@ -41,7 +41,7 @@ class Show extends React.Component {
 
   render() {
     const { name, location = [], images = [], statistics = [] } = this.state;
-    const { propertiesCount: appartmentsCount } = statistics;
+    const { propertiesCount } = statistics;
 
     return (
       <main>
@@ -54,7 +54,7 @@ class Show extends React.Component {
         <Carousel images={images} />
         <Wrapper>
           <Facts />
-          <Features appartmentsCount={appartmentsCount} />
+          <Features propertiesCount={propertiesCount} />
           <Description />
           <Infrastructure />
         </Wrapper>
