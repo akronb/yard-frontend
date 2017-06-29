@@ -39,21 +39,24 @@ const Button = styled.button`
   line-height: .625rem;
 `;
 
-export default (props) => {
-  console.log(props.name);
-  return (
-    <Grid>
-      <Wrapper>
-        <div>
-          <Name>
-            {props.name}
-          </Name>
-          <Location>
-            Район Якиманка, улица Большая Полянка, дом 44 • 119180
-          </Location>
-        </div>
-        <Button>В избранное</Button>
-      </Wrapper>
-    </Grid>
-  );
-};
+function formatLocation(location) {
+  const address = [location.subLocalityName, location.street].filter(item => !!item).join(', ');
+  const { postalCode = '' } = location;
+
+  return [address, postalCode].filter(item => !!item).join(' • ');
+}
+
+export default props =>
+  (<Grid>
+    <Wrapper>
+      <div>
+        <Name>
+          {props.name}
+        </Name>
+        <Location>
+          {formatLocation(props.location)}
+        </Location>
+      </div>
+      <Button>В избранное</Button>
+    </Wrapper>
+  </Grid>);

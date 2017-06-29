@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import { getImageUrl } from '../../utils';
+
 const Carousel = styled.div`
   height: 400px;
 `;
@@ -33,14 +35,21 @@ const Button = styled.button`
   color: #fff;
 `;
 
+function declOfNum(number, titles) {
+  const cases = [2, 0, 1, 1, 1, 2];
+  const decl =
+    titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
+  return `${number} ${decl}`;
+}
+
 export default props =>
   (<Carousel>
     <Wrapper>
-      {props.imageList.map(data =>
-        <Photo src={`https://images.jqestate.ru/${data.id}-jqestate-512`} />,
-      )}
+      {props.imageList.map(data => <Photo src={getImageUrl(data.id, 512)} key={data.id} />)}
     </Wrapper>
     <Grid>
-      <Button>41 фотография</Button>
+      <Button>
+        {declOfNum(props.imageList.length, ['фотография', 'фотографии', 'фотографий'])}
+      </Button>
     </Grid>
   </Carousel>);

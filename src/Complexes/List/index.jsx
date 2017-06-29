@@ -3,6 +3,7 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import { Helmet } from 'react-helmet';
 
+import { get } from '../../api';
 import Hero from './Hero';
 import Intro from './Intro';
 import Card from './Card';
@@ -18,11 +19,9 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://api.jqestate.ru/v1/complexes?filter[state]=public')
-      .then(responce => responce.json())
-      .then((json) => {
-        this.setState({ items: json.items });
-      });
+    get('/complexes?filter[state]=public').then(({ items = [] }) => {
+      this.setState({ items });
+    });
   }
 
   render() {
@@ -43,7 +42,11 @@ class List extends React.Component {
               location={formatLocation(data.location)}
               name={data.name}
               imageId={data.images[0].id}
-            />),
+            >
+              Beautifully appointed residences perched atop Rincon Hill, The Harrison offers
+              unparalleled Bay Bridge and city views within steps of San Francisco’s greatest
+              restaurants, shops, and The Embarcadero.
+            </Card>),
           )}
         </Grid>
       </main>

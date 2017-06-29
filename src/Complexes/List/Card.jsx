@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { getImageUrl } from '../../utils';
 import Image from '../../Image';
 
 const Card = styled(Link)`
@@ -61,8 +62,8 @@ const Description = styled.p`
 export default props =>
   (<Card to={`/complexes/${props.id}`}>
     <Preview
-      x1={`https://images.jqestate.ru/${props.imageId}-jqestate-512`}
-      x2={`https://images.jqestate.ru/${props.imageId}-jqestate-1024`}
+      x1={getImageUrl(props.imageId, 512)}
+      x2={getImageUrl(props.imageId, 1024)}
       title={props.name}
     />
     <Info>

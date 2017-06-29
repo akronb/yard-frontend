@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
+import { get } from '../../api';
 import Header from './Header';
 import Carousel from './Carousel';
 import Facts from './Facts';
@@ -25,15 +26,20 @@ class Show extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`https://api.jqestate.ru/v1/complexes/${this.props.match.params.id}`)
-      .then(responce => responce.json())
-      .then((json) => {
-        this.setState(json);
-      });
+    this.load();
+  }
+
+  componentWillReciveProps(nextProps) {
+    if (nextProps !== this.props) this.load();
+  }
+
+  load() {
+    get(`/complexes/${this.props.match.params.id}`).then((json) => {
+      this.setState(json);
+    });
   }
 
   render() {
-    console.log(this.state);
     const { name, location = [], images = [], statistics = [] } = this.state;
 
     return (
