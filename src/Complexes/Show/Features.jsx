@@ -37,7 +37,7 @@ export default props =>
       <Col lg={4}>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>{props.propCount}</Value>
+          <Value>{props.appartmentsCount}</Value>
         </Feature>
         <Feature>
           <Label>Статус:</Label>
@@ -51,29 +51,29 @@ export default props =>
       <Col lg={4}>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>{props.propCount}</Value>
+          <Value>{props.appartmentsCount}</Value>
         </Feature>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>{props.propCount}</Value>
+          <Value>{props.appartmentsCount}</Value>
         </Feature>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>{props.propCount}</Value>
+          <Value>{props.appartmentsCount}</Value>
         </Feature>
       </Col>
       <Col lg={4}>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>{props.propCount}</Value>
+          <Value>{props.appartmentsCount}</Value>
         </Feature>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>{props.propCount}</Value>
+          <Value>{props.appartmentsCount}</Value>
         </Feature>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>{props.propCount}</Value>
+          <Value>{props.appartmentsCount}</Value>
         </Feature>
       </Col>
     </Row>

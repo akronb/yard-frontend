@@ -19,13 +19,13 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    get('/complexes?filter[state]=public').then(({ items = [] }) => {
-      this.setState({ items });
+    get('/complexes?filter[state]=public').then(({ items: complexes = [] }) => {
+      this.setState({ complexes });
     });
   }
 
   render() {
-    const { items: complexes = [] } = this.state;
+    const { complexes = [] } = this.state;
 
     return (
       <main>
