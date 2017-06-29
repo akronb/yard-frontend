@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import arrowImg from '../../img/arrow-blue.svg';
-import Image from '../../Image';
+import Image from '../../Components/Image';
 
 const Wrapper = styled.div`
   padding-top: 2rem;

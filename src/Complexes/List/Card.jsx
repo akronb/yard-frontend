@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { getImageUrl } from '../../utils';
-import Image from '../../Image';
+import Image from '../../Components/Image';
 
 const Card = styled(Link)`
   display: flex;

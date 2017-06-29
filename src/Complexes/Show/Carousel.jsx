@@ -3,7 +3,7 @@ import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 import { getImageUrl } from '../../utils';
-import Pluralizer from '../../Pluralizer';
+import Pluralizer from '../../Components/Pluralizer';
 
 const Carousel = styled.div`
   height: 400px;
