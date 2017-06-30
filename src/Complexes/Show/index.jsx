@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
+import { get } from '../../api';
 import Header from './Header';
 import Carousel from './Carousel';
 import Facts from './Facts';
@@ -18,23 +19,51 @@ const Wrapper = styled.div`
   background: #fff;
 `;
 
-export default () => (
-  <main>
-    <Helmet>
-      <title>Жилой комплекс «Полянка/44» | Compass</title>
-    </Helmet>
-    <Wrapper>
-      <Header />
-    </Wrapper>
-    <Carousel />
-    <Wrapper>
-      <Facts />
-      <Features />
-      <Description />
-      <Infrastructure />
-    </Wrapper>
-    <Offers />
-    <Guide />
-    <Location />
-  </main>
-  );
+class Show extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    this.load();
+  }
+
+  componentWillReciveProps(nextProps) {
+    if (nextProps !== this.props) this.load();
+  }
+
+  load() {
+    get(`/complexes/${this.props.match.params.id}`).then((json) => {
+      this.setState(json);
+    });
+  }
+
+  render() {
+    const { name, location = [], images = [], statistics = [] } = this.state;
+    const { propertiesCount } = statistics;
+
+    return (
+      <main>
+        <Helmet>
+          <title>{`${name} | Compass`}</title>
+        </Helmet>
+        <Wrapper>
+          <Header name={name} location={location} />
+        </Wrapper>
+        <Carousel images={images} />
+        <Wrapper>
+          <Facts />
+          <Features propertiesCount={propertiesCount} />
+          <Description />
+          <Infrastructure />
+        </Wrapper>
+        <Offers />
+        <Guide />
+        <Location />
+      </main>
+    );
+  }
+}
+
+export default Show;

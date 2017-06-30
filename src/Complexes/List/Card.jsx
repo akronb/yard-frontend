@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Image from '../../Image';
+import { getImageUrl } from '../../utils';
+import Image from '../../Components/Image';
 
 const Card = styled(Link)`
   display: flex;
@@ -23,6 +24,7 @@ const Preview = styled(Image)`
   width: 484px;
   height: 350px;
   flex-shrink: 0;
+  object-fit: cover;
 `;
 
 const Info = styled.div`
@@ -36,6 +38,7 @@ const Info = styled.div`
 const Location = styled.p`
   display: block;
   font-family: monaco, Consolas, 'Lucida Console', monospace;
+  text-transform: uppercase;
   color: #646971;
   margin-top: 1.5rem;
 `;
@@ -59,8 +62,8 @@ const Description = styled.p`
 export default props =>
   (<Card to={`/complexes/${props.id}`}>
     <Preview
-      x1={`appartment-preview${props.id}.jpg`}
-      x2={`appartment-preview${props.id}@2x.jpg`}
+      x1={getImageUrl(props.imageId, 512)}
+      x2={getImageUrl(props.imageId, 1024)}
       title={props.name}
     />
     <Info>

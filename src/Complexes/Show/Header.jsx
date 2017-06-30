@@ -39,18 +39,24 @@ const Button = styled.button`
   line-height: .625rem;
 `;
 
-export default () => (
-  <Grid>
+function formatLocation(location) {
+  const address = [location.subLocalityName, location.street].filter(item => !!item).join(', ');
+  const { postalCode = '' } = location;
+
+  return [address, postalCode].filter(item => !!item).join(' • ');
+}
+
+export default props =>
+  (<Grid>
     <Wrapper>
       <div>
         <Name>
-            Жилой комплекс «Полянка/44»
-          </Name>
+          {props.name}
+        </Name>
         <Location>
-            Район Якиманка, улица Большая Полянка, дом 44 • 119180
-          </Location>
+          {formatLocation(props.location)}
+        </Location>
       </div>
       <Button>В избранное</Button>
     </Wrapper>
-  </Grid>
-  );
+  </Grid>);

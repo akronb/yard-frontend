@@ -30,14 +30,14 @@ const Value = styled.dt`
   color: #3e4247;
 `;
 
-export default () => (
-  <Grid>
+export default props =>
+  (<Grid>
     <Heading>Характеристики</Heading>
     <Row>
       <Col lg={4}>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>1 503</Value>
+          <Value>{props.propertiesCount}</Value>
         </Feature>
         <Feature>
           <Label>Статус:</Label>
@@ -51,31 +51,30 @@ export default () => (
       <Col lg={4}>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>1 503</Value>
+          <Value>{props.propertiesCount}</Value>
         </Feature>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>1 503</Value>
+          <Value>{props.propertiesCount}</Value>
         </Feature>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>1 503</Value>
+          <Value>{props.propertiesCount}</Value>
         </Feature>
       </Col>
       <Col lg={4}>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>1 503</Value>
+          <Value>{props.propertiesCount}</Value>
         </Feature>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>1 503</Value>
+          <Value>{props.propertiesCount}</Value>
         </Feature>
         <Feature>
           <Label>Количество квартир:</Label>
-          <Value>1 503</Value>
+          <Value>{props.propertiesCount}</Value>
         </Feature>
       </Col>
     </Row>
-  </Grid>
-  );
+  </Grid>);

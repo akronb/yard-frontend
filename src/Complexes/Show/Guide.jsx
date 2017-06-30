@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import arrowImg from '../../img/arrow-blue.svg';
-import Image from '../../Image';
+import Image from '../../Components/Image';
 
 const Wrapper = styled.div`
   padding-top: 2rem;
@@ -47,21 +47,24 @@ const Photo = styled(Image)`
   width: 100%;
 `;
 
-export default () => (
-  <Wrapper>
+export default () =>
+  (<Wrapper>
     <Grid>
       <Row middle="lg">
         <Col lg={6}>
           <District>Якиманка</District>
           <Title>
-              Исторический центр Москвы в двух километрах&nbsp;от Кремля
-            </Title>
+            Исторический центр Москвы в двух километрах&nbsp;от Кремля
+          </Title>
           <GuideLink to="#">Гид по Якиманке</GuideLink>
         </Col>
         <Col lg={6}>
-          <Photo x1="polyanka-photo.jpg" x2="polyanka-photo@2x.jpg" title="Якиманка" />
+          <Photo
+            x1={`${process.env.PUBLIC_URL}/img/polyanka-photo.jpg`}
+            x2={`${process.env.PUBLIC_URL}/img/polyanka-photo@2x.jpg`}
+            title="Якиманка"
+          />
         </Col>
       </Row>
     </Grid>
-  </Wrapper>
-  );
+  </Wrapper>);
