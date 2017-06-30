@@ -1,4 +1,5 @@
 /* eslint react/jsx-filename-extension: 0 */
+// @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'normalize.css';

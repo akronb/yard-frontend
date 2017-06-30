@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -32,8 +33,8 @@ const MenuLink = styled(Link)`
   }
 `;
 
-export default () => (
-  <Header>
+export default () =>
+  (<Header>
     <Grid>
       <Wrapper>
         <Link to="/">
@@ -46,5 +47,4 @@ export default () => (
         </nav>
       </Wrapper>
     </Grid>
-  </Header>
-  );
+  </Header>);
