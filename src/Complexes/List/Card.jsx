@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -59,7 +60,15 @@ const Description = styled.p`
   color: #3e4247;
 `;
 
-export default props =>
+type Props = {
+  id: number,
+  imageId: string,
+  name: string,
+  location: string,
+  children: Element,
+};
+
+export default (props: Props) =>
   (<Card to={`/complexes/${props.id}`}>
     <Preview
       x1={getImageUrl(props.imageId, 512)}
