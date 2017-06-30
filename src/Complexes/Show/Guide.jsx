@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -5,6 +6,8 @@ import { Link } from 'react-router-dom';
 
 import arrowImg from '../../img/arrow-blue.svg';
 import Image from '../../Components/Image';
+
+const PUBLIC_URL: string = process.env.PUBLIC_URL || '';
 
 const Wrapper = styled.div`
   padding-top: 2rem;
@@ -60,8 +63,8 @@ export default () =>
         </Col>
         <Col lg={6}>
           <Photo
-            x1={`${process.env.PUBLIC_URL}/img/polyanka-photo.jpg`}
-            x2={`${process.env.PUBLIC_URL}/img/polyanka-photo@2x.jpg`}
+            x1={`${PUBLIC_URL}/img/polyanka-photo.jpg`}
+            x2={`${PUBLIC_URL}/img/polyanka-photo@2x.jpg`}
             title="Якиманка"
           />
         </Col>

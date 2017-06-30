@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -30,7 +31,11 @@ const Value = styled.dt`
   color: #3e4247;
 `;
 
-export default props =>
+type Props = {
+  propertiesCount: number,
+};
+
+export default (props: Props) =>
   (<Grid>
     <Heading>Характеристики</Heading>
     <Row>

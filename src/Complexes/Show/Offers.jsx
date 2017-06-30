@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -59,8 +60,8 @@ const Button = styled.button`
   font-size: 1rem;
 `;
 
-export default () => (
-  <Wrapper>
+export default () =>
+  (<Wrapper>
     <Grid>
       <Title>Предложения в ЖК «Полянка/44»</Title>
       <Row>
@@ -114,5 +115,4 @@ export default () => (
         </Col>
       </Row>
     </Grid>
-  </Wrapper>
-  );
+  </Wrapper>);

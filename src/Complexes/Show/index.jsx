@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
@@ -20,16 +21,18 @@ const Wrapper = styled.div`
 `;
 
 class Show extends React.Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
     this.state = {};
   }
+
+  state: Object;
 
   componentDidMount() {
     this.load();
   }
 
-  componentWillReciveProps(nextProps) {
+  componentWillReciveProps(nextProps: Object) {
     if (nextProps !== this.props) this.load();
   }
 
@@ -40,7 +43,7 @@ class Show extends React.Component {
   }
 
   render() {
-    const { name, location = [], images = [], statistics = [] } = this.state;
+    const { name, location = {}, images = [], statistics = {} } = this.state;
     const { propertiesCount } = statistics;
 
     return (

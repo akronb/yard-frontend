@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -39,14 +40,24 @@ const Button = styled.button`
   line-height: .625rem;
 `;
 
-function formatLocation(location) {
-  const address = [location.subLocalityName, location.street].filter(item => !!item).join(', ');
-  const { postalCode = '' } = location;
+type LocationParams = {
+  subLocalityName: string,
+  street: string,
+  postalCode: string,
+};
+
+function formatLocation({ subLocalityName, street, postalCode = '' }: LocationParams): string {
+  const address = [subLocalityName, street].filter(item => !!item).join(', ');
 
   return [address, postalCode].filter(item => !!item).join(' • ');
 }
 
-export default props =>
+type Props = {
+  name: string,
+  location: Object,
+};
+
+export default (props: Props) =>
   (<Grid>
     <Wrapper>
       <div>

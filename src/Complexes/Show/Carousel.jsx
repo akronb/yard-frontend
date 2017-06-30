@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -36,7 +37,11 @@ const Button = styled.button`
   color: #fff;
 `;
 
-export default props =>
+type Props = {
+  images: Array<Object>,
+};
+
+export default (props: Props) =>
   (<Carousel>
     <Wrapper>
       {props.images.map(data => <Photo src={getImageUrl(data.id, 512)} key={data.id} />)}
