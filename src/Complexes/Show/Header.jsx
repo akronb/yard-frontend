@@ -45,7 +45,8 @@ const Button = styled.button`
 function formatLocation({ subLocalityName, street, postalCode }: LocationTypes): string {
   const address = [subLocalityName, street].filter(item => !!item).join(', ');
 
-  return [address, postalCode].filter(item => !!item).join(' • ');
+  if (postalCode) return `${address} • ${postalCode}`;
+  return address;
 }
 
 type Props = {
