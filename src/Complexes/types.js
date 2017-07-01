@@ -1,5 +1,29 @@
 // @flow
-export type Complex = {
+export type ImagesTypes = Array<{
+  id: string,
+  isPublic: boolean,
+}>;
+
+export type LocationTypes = {
+  latitude?: string,
+  districtId?: number,
+  localityId?: number,
+  subLocalityName?: string,
+  subwayIds?: Array<number>,
+  countryName?: string,
+  districtName?: string,
+  longitude?: string,
+  postalCode?: number,
+  countryId?: number,
+  subLocalityId?: number,
+  house?: string,
+  localityName?: string,
+  street?: string,
+  regionId?: number,
+  regionName?: string,
+};
+
+export type ComplexTypes = {
   commissioningYear?: number,
   adjacentTerritory: {
     area?: number,
@@ -10,24 +34,7 @@ export type Complex = {
   },
   name: string,
   updatedAt?: string,
-  location: {
-    latitude?: string,
-    districtId?: number,
-    localityId?: number,
-    subLocalityName?: string,
-    subwayIds?: Array<number>,
-    countryName?: string,
-    districtName?: string,
-    longitude?: string,
-    postalCode?: number,
-    countryId?: number,
-    subLocalityId?: number,
-    house?: string,
-    localityName?: string,
-    street?: string,
-    regionId?: number,
-    regionName?: string,
-  },
+  location: LocationTypes,
   state: string,
   statistics?: {
     resalePropertiesCount: number,
@@ -102,9 +109,6 @@ export type Complex = {
   id: string,
   updatedByUserId?: number,
   createdAt: string,
-  images: ?Array<{
-    id: string,
-    isPublic: boolean,
-  }>,
+  images?: ImagesTypes,
   accreditors: ?Array<number>,
 };

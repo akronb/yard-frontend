@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
 import { get } from '../../api';
-import type { Complex } from '../types';
+import type { ComplexTypes } from '../types';
 import Header from './Header';
 import Carousel from './Carousel';
 import Facts from './Facts';
@@ -22,22 +22,9 @@ const Wrapper = styled.div`
 `;
 
 class Show extends React.Component {
-  state: Complex = {
-    id: '',
-    name: '',
-    state: '',
-    images: [],
-    location: {
-      latitude: '',
-      subwayIds: [],
-      longitude: '',
-    },
-    adjacentTerritory: {},
-    linkedContactIds: [],
-    createdByUserId: null,
-    createdAt: '',
-    accreditors: [],
-  };
+  state = {};
+
+  state: ComplexTypes;
 
   componentDidMount() {
     this.load();

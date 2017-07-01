@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
-import type { Complex } from '../types';
+import type { ImagesTypes } from '../types';
 import { getImageUrl } from '../../utils';
 import Pluralizer from '../../Components/Pluralizer';
 
@@ -39,14 +39,13 @@ const Button = styled.button`
 `;
 
 type Props = {
-  images: $PropertyType<Complex, 'images'>,
+  images: ImagesTypes,
 };
 
 export default (props: Props) =>
   (<Carousel>
     <Wrapper>
-      {props.images.length > 0 &&
-        props.images.map(data => <Photo src={getImageUrl(data.id, 512)} key={data.id} />)}
+      {props.images.map(data => <Photo src={getImageUrl(data.id, 512)} key={data.id} />)}
     </Wrapper>
     <Grid>
       <Button>
