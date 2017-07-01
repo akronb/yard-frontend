@@ -34,7 +34,7 @@ export type ComplexType = {
   },
   name: string,
   updatedAt?: string,
-  location: LocationTypes,
+  location: LocationType,
   state: string,
   statistics?: {
     resalePropertiesCount: number,
@@ -109,6 +109,6 @@ export type ComplexType = {
   id: string,
   updatedByUserId?: number,
   createdAt: string,
-  images: Array<ImagesTypes>,
+  images: Array<ImagesType>,
   accreditors: ?Array<number>,
 };
