@@ -1,22 +1,20 @@
-/* eslint react/no-unescaped-entities: 0 */
+// @flow
 import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import { Helmet } from 'react-helmet';
 
 import { get } from '../../api';
+import type { ComplexType, LocationType } from '../types';
 import Hero from './Hero';
 import Intro from './Intro';
 import Card from './Card';
 
-function formatLocation(location) {
-  return [location.subLocalityName, location.street].filter(item => !!item).join(', ');
+function formatLocation({ subLocalityName, street }: LocationType): string {
+  return [subLocalityName, street].filter(item => !!item).join(', ');
 }
 
 class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state: { complexes: Array<ComplexType> } = { complexes: [] };
 
   componentDidMount() {
     get('/complexes?filter[state]=public').then(({ items: complexes = [] }) => {

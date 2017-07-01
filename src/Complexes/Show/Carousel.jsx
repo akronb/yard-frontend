@@ -1,13 +1,13 @@
+// @flow
 import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import type { ImagesType } from '../types';
 import { getImageUrl } from '../../utils';
 import Pluralizer from '../../Components/Pluralizer';
 
-const Carousel = styled.div`
-  height: 400px;
-`;
+const Carousel = styled.div`height: 400px;`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,9 +15,7 @@ const Wrapper = styled.div`
   height: 400px;
 `;
 
-const Photo = styled.img`
-  max-height: 400px;
-`;
+const Photo = styled.img`max-height: 400px;`;
 
 const Button = styled.button`
   position: relative;
@@ -36,7 +34,11 @@ const Button = styled.button`
   color: #fff;
 `;
 
-export default props =>
+type Props = {
+  images: Array<ImagesType>,
+};
+
+export default (props: Props) =>
   (<Carousel>
     <Wrapper>
       {props.images.map(data => <Photo src={getImageUrl(data.id, 512)} key={data.id} />)}

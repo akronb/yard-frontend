@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -15,8 +16,8 @@ const Text = styled.p`
   color: #3e4247;
 `;
 
-export default () => (
-  <Grid>
+export default () =>
+  (<Grid>
     <Heading>Инфраструктура</Heading>
     <Wrapper>
       <Row>
@@ -49,5 +50,4 @@ export default () => (
         </Col>
       </Row>
     </Wrapper>
-  </Grid>
-  );
+  </Grid>);

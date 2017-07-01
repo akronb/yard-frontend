@@ -1,6 +1,9 @@
+// @flow
 import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
+
+import type { LocationType } from '../types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,14 +42,19 @@ const Button = styled.button`
   line-height: .625rem;
 `;
 
-function formatLocation(location) {
-  const address = [location.subLocalityName, location.street].filter(item => !!item).join(', ');
-  const { postalCode = '' } = location;
+function formatLocation({ subLocalityName, street, postalCode }: LocationType): string {
+  const address = [subLocalityName, street].filter(item => !!item).join(', ');
 
-  return [address, postalCode].filter(item => !!item).join(' • ');
+  if (postalCode) return `${address} • ${postalCode}`;
+  return address;
 }
 
-export default props =>
+type Props = {
+  name: string,
+  location: LocationType,
+};
+
+export default (props: Props) =>
   (<Grid>
     <Wrapper>
       <div>

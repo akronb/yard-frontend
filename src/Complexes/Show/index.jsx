@@ -1,8 +1,10 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
 import { get } from '../../api';
+import type { ComplexType } from '../types';
 import Header from './Header';
 import Carousel from './Carousel';
 import Facts from './Facts';
@@ -20,16 +22,15 @@ const Wrapper = styled.div`
 `;
 
 class Show extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {};
+
+  state: ComplexType;
 
   componentDidMount() {
     this.load();
   }
 
-  componentWillReciveProps(nextProps) {
+  componentWillReciveProps(nextProps: Object) {
     if (nextProps !== this.props) this.load();
   }
 
@@ -40,7 +41,7 @@ class Show extends React.Component {
   }
 
   render() {
-    const { name, location = [], images = [], statistics = [] } = this.state;
+    const { name, location = {}, images = [], statistics = {} } = this.state;
     const { propertiesCount } = statistics;
 
     return (

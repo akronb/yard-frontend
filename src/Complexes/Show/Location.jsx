@@ -1,6 +1,9 @@
+// @flow
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
+
+const PUBLIC_URL: string = process.env.PUBLIC_URL || '';
 
 const Wrapper = styled.div`
   padding-bottom: 4rem;
@@ -40,15 +43,12 @@ const Distance = styled.p`
   color: #a9afb6;
 `;
 
-export default () => (
-  <Wrapper>
+export default () =>
+  (<Wrapper>
     <Grid>
       <Row>
         <Col lg={6}>
-          <Location
-            src={`${process.env.PUBLIC_URL}/img/map.png`}
-            alt="Жилой комплекс «Полянка/44»"
-          />
+          <Location src={`${PUBLIC_URL}/img/map.png`} alt="Жилой комплекс «Полянка/44»" />
         </Col>
         <Col lg={6}>
           <Places>
@@ -68,5 +68,4 @@ export default () => (
         </Col>
       </Row>
     </Grid>
-  </Wrapper>
-  );
+  </Wrapper>);
