@@ -4,17 +4,17 @@ import { Grid } from 'react-flexbox-grid';
 import { Helmet } from 'react-helmet';
 
 import { get } from '../../api';
-import type { ComplexTypes, LocationTypes } from '../types';
+import type { ComplexType, LocationType } from '../types';
 import Hero from './Hero';
 import Intro from './Intro';
 import Card from './Card';
 
-function formatLocation({ subLocalityName, street }: LocationTypes): string {
+function formatLocation({ subLocalityName, street }: LocationType): string {
   return [subLocalityName, street].filter(item => !!item).join(', ');
 }
 
 class List extends React.Component {
-  state: { complexes: Array<ComplexTypes> } = { complexes: [] };
+  state: { complexes: Array<ComplexType> } = { complexes: [] };
 
   componentDidMount() {
     get('/complexes?filter[state]=public').then(({ items: complexes = [] }) => {

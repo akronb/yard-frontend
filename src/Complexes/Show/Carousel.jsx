@@ -3,13 +3,11 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
-import type { ImagesTypes } from '../types';
+import type { ImagesType } from '../types';
 import { getImageUrl } from '../../utils';
 import Pluralizer from '../../Components/Pluralizer';
 
-const Carousel = styled.div`
-  height: 400px;
-`;
+const Carousel = styled.div`height: 400px;`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,9 +15,7 @@ const Wrapper = styled.div`
   height: 400px;
 `;
 
-const Photo = styled.img`
-  max-height: 400px;
-`;
+const Photo = styled.img`max-height: 400px;`;
 
 const Button = styled.button`
   position: relative;
@@ -39,7 +35,7 @@ const Button = styled.button`
 `;
 
 type Props = {
-  images: ImagesTypes,
+  images: Array<ImagesType>,
 };
 
 export default (props: Props) =>

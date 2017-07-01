@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
-import type { LocationTypes } from '../types';
+import type { LocationType } from '../types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const Button = styled.button`
   line-height: .625rem;
 `;
 
-function formatLocation({ subLocalityName, street, postalCode }: LocationTypes): string {
+function formatLocation({ subLocalityName, street, postalCode }: LocationType): string {
   const address = [subLocalityName, street].filter(item => !!item).join(', ');
 
   if (postalCode) return `${address} • ${postalCode}`;
@@ -51,7 +51,7 @@ function formatLocation({ subLocalityName, street, postalCode }: LocationTypes):
 
 type Props = {
   name: string,
-  location: LocationTypes,
+  location: LocationType,
 };
 
 export default (props: Props) =>

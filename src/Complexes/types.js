@@ -1,10 +1,10 @@
 // @flow
-export type ImagesTypes = Array<{
+export type ImagesType = {
   id: string,
   isPublic: boolean,
-}>;
+};
 
-export type LocationTypes = {
+export type LocationType = {
   latitude?: string,
   districtId?: number,
   localityId?: number,
@@ -23,7 +23,7 @@ export type LocationTypes = {
   regionName?: string,
 };
 
-export type ComplexTypes = {
+export type ComplexType = {
   commissioningYear?: number,
   adjacentTerritory: {
     area?: number,
@@ -109,6 +109,6 @@ export type ComplexTypes = {
   id: string,
   updatedByUserId?: number,
   createdAt: string,
-  images?: ImagesTypes,
+  images: Array<ImagesTypes>,
   accreditors: ?Array<number>,
 };
