@@ -30,6 +30,6 @@
     "eject": "react-scripts eject",
     "prepush": "eslint --ext .js,.jsx src/",
     "flow": "flow",
-    "ft": "flow-typed install"
+    "flow:install": "flow-typed install"
   }
 }
