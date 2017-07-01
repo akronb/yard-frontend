@@ -3,6 +3,8 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import type { Complex } from '../types';
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -40,13 +42,17 @@ const Button = styled.button`
   line-height: .625rem;
 `;
 
-type LocationParams = {
-  subLocalityName: string,
-  street: string,
-  postalCode: string,
-};
+// type LocationParams = {
+//   subLocalityName: string,
+//   street: string,
+//   postalCode: ?string,
+// };
 
-function formatLocation({ subLocalityName, street, postalCode = '' }: LocationParams): string {
+function formatLocation({
+  subLocalityName,
+  street,
+  postalCode,
+}: $PropertyType<Complex, 'location'>): string {
   const address = [subLocalityName, street].filter(item => !!item).join(', ');
 
   return [address, postalCode].filter(item => !!item).join(' • ');
@@ -54,7 +60,7 @@ function formatLocation({ subLocalityName, street, postalCode = '' }: LocationPa
 
 type Props = {
   name: string,
-  location: Object,
+  location: $PropertyType<Complex, 'location'>,
 };
 
 export default (props: Props) =>
