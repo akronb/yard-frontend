@@ -14,6 +14,9 @@ script:
 deploy:
   provider: script
   script:
+    - npm install -g now
     - yarn run build
+    - cd build
+    - now -t $NOW_TOKEN -n akronb-yard
   on:
     branch: master
