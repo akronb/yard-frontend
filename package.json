@@ -22,6 +22,7 @@
     "flow-typed": "^2.1.2",
     "husky": "^0.14.1",
     "jest": "^20.0.4",
+    "now": "^7.1.1",
     "react-scripts": "1.0.7"
   },
   "scripts": {
@@ -34,5 +35,9 @@
     "flow:install": "flow-typed install",
     "now:deploy": "yarn run build && now -p -t $NOW_TOKEN build && now alias -t $NOW_TOKEN",
     "prepush": "yarn run lint"
+  },
+  "now": {
+    "name": "build",
+    "alias": "akronb-yard"
   }
 }
