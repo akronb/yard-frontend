@@ -28,8 +28,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prepush": "eslint --ext .js,.jsx src/",
+    "lint": "eslint --ext .js,.jsx src/",
     "flow": "flow",
-    "flow:install": "flow-typed install"
+    "flow:install": "flow-typed install",
+    "prepush": "yarn run lint"
   }
 }
