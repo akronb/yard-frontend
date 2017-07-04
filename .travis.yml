@@ -7,13 +7,13 @@ cache:
     - node_modules
 install:
   - yarn install
-  - yarn run flow:install
+  - yarn flow:install
 script:
-  - yarn run lint
-  - yarn run flow
+  - yarn lint
+  - yarn flow
 deploy:
   provider: script
   script:
-    - yarn run now:deploy
+    - yarn now:deploy
   on:
     branch: master
