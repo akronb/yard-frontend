@@ -21,6 +21,8 @@
     "flow-bin": "^0.49.1",
     "flow-typed": "^2.1.2",
     "husky": "^0.14.1",
+    "jest": "^20.0.4",
+    "now": "^7.1.1",
     "react-scripts": "1.0.7"
   },
   "scripts": {
@@ -28,8 +30,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prepush": "eslint --ext .js,.jsx src/",
+    "lint": "eslint --ext .js,.jsx src/",
     "flow": "flow",
-    "flow:install": "flow-typed install"
+    "flow:install": "flow-typed install",
+    "deploy": "yarn build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN",
+    "prepush": "yarn lint"
+  },
+  "now": {
+    "alias": "akronb-yard"
   }
 }
