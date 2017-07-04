@@ -33,8 +33,8 @@
     "lint": "eslint --ext .js,.jsx src/",
     "flow": "flow",
     "flow:install": "flow-typed install",
-    "now:deploy": "yarn run build && now -p -t $NOW_TOKEN build && now alias -t $NOW_TOKEN",
-    "prepush": "yarn run lint"
+    "now:deploy": "yarn build && now -p -t $NOW_TOKEN build && now alias -t $NOW_TOKEN",
+    "prepush": "yarn lint"
   },
   "now": {
     "name": "build",
