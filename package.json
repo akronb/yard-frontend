@@ -33,11 +33,10 @@
     "lint": "eslint --ext .js,.jsx src/",
     "flow": "flow",
     "flow:install": "flow-typed install",
-    "now:deploy": "yarn build && now -p -t $NOW_TOKEN build && now alias -t $NOW_TOKEN",
+    "deploy": "yarn build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN",
     "prepush": "yarn lint"
   },
   "now": {
-    "name": "build",
     "alias": "akronb-yard"
   }
 }
