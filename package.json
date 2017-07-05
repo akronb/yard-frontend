@@ -37,6 +37,7 @@
     "prepush": "yarn lint"
   },
   "now": {
+    "name": "build",
     "alias": "akronb-yard"
   }
 }
