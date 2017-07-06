@@ -1,10 +1,10 @@
 // @flow
-const baseUrl = 'https://api.jqestate.ru/v1';
+const baseUrl = 'https://yard.moscow/api/v1';
 
 export function get(requestUrl: string): Promise<*> {
-  return fetch(baseUrl + requestUrl).then(res => res.json());
+  return fetch(encodeURI(baseUrl + requestUrl)).then(res => res.json());
 }
 
 export function post(requestUrl: string): Promise<*> {
-  return fetch(baseUrl + requestUrl, { method: 'POST' }).then(res => res.json());
+  return fetch(encodeURI(baseUrl + requestUrl), { method: 'POST' }).then(res => res.json());
 }
