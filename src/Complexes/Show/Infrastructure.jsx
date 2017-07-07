@@ -3,6 +3,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import type { AmenitiesType } from '../types';
 import Heading from './Heading';
 
 const Wrapper = styled.div`
@@ -16,38 +17,27 @@ const Text = styled.p`
   color: #3e4247;
 `;
 
-export default () =>
-  (<Grid>
-    <Heading>Инфраструктура</Heading>
-    <Wrapper>
-      <Row>
-        <Col lg={2}>
-          <Text>Бассейн</Text>
-        </Col>
-        <Col lg={2}>
-          <Text>Частная школа</Text>
-        </Col>
-        <Col lg={2}>
-          <Text>Детский сад</Text>
-        </Col>
-        <Col lg={2}>
-          <Text>Бассейн</Text>
-        </Col>
-        <Col lg={2}>
-          <Text>Частная школа</Text>
-        </Col>
-        <Col lg={2}>
-          <Text>Детский сад</Text>
-        </Col>
-        <Col lg={2}>
-          <Text>Частная школа</Text>
-        </Col>
-        <Col lg={2}>
-          <Text>Частная школа</Text>
-        </Col>
-        <Col lg={2}>
-          <Text>Частная школа</Text>
-        </Col>
-      </Row>
-    </Wrapper>
-  </Grid>);
+type Props = {
+  amenities: AmenitiesType,
+};
+
+export default (props: Props) => {
+  const { amenities = [] } = props;
+
+  return (
+    <Grid>
+      <Heading>Инфраструктура</Heading>
+      <Wrapper>
+        <Row>
+          {amenities.map(data =>
+            (<Col lg={2}>
+              <Text>
+                {data}
+              </Text>
+            </Col>),
+          )}
+        </Row>
+      </Wrapper>
+    </Grid>
+  );
+};

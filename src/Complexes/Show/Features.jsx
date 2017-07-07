@@ -41,44 +41,74 @@ export default (props: Props) =>
     <Row>
       <Col lg={4}>
         <Feature>
-          <Label>Количество квартир:</Label>
-          <Value>{props.propertiesCount}</Value>
+          <Label>Количество квартир</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
         </Feature>
         <Feature>
-          <Label>Статус:</Label>
+          <Label>Статус</Label>
           <Value>Квартиры</Value>
         </Feature>
         <Feature>
-          <Label>Цены:</Label>
+          <Label>Цены</Label>
+          <Value>от 5.3 до 143.5 млн</Value>
+        </Feature>
+        <Feature>
+          <Label>Безопасность</Label>
           <Value>от 5.3 до 143.5 млн</Value>
         </Feature>
       </Col>
       <Col lg={4}>
         <Feature>
-          <Label>Количество квартир:</Label>
-          <Value>{props.propertiesCount}</Value>
+          <Label>Конструкция корпусов</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
         </Feature>
         <Feature>
-          <Label>Количество квартир:</Label>
-          <Value>{props.propertiesCount}</Value>
+          <Label>Площадь</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
         </Feature>
         <Feature>
-          <Label>Количество квартир:</Label>
-          <Value>{props.propertiesCount}</Value>
+          <Label>Высота потолков</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
+        </Feature>
+        <Feature>
+          <Label>Обслуживание</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
         </Feature>
       </Col>
       <Col lg={4}>
         <Feature>
-          <Label>Количество квартир:</Label>
-          <Value>{props.propertiesCount}</Value>
+          <Label>Начало строительства:</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
         </Feature>
         <Feature>
-          <Label>Количество квартир:</Label>
-          <Value>{props.propertiesCount}</Value>
+          <Label>Конец строительства:</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
         </Feature>
         <Feature>
-          <Label>Количество квартир:</Label>
-          <Value>{props.propertiesCount}</Value>
+          <Label>Наземная парковка:</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
+        </Feature>
+        <Feature>
+          <Label>Подземная парковка:</Label>
+          <Value>
+            {props.propertiesCount}
+          </Value>
         </Feature>
       </Col>
     </Row>

@@ -3,12 +3,11 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import type { DetailsType } from '../types';
 import SeparationLine from './SeparationLine';
 import Heading from './Heading';
 
-const Wrapper = styled.div`
-  display: flex;
-`;
+const Wrapper = styled.div`display: flex;`;
 
 const Subheading = styled.small`
   display: block;
@@ -26,21 +25,31 @@ const Fact = styled(Heading)`
   }
 `;
 
-export default () =>
-  (<Grid>
-    <Wrapper>
-      <Fact>
-        950
-        <Subheading>предложений</Subheading>
-      </Fact>
-      <Fact>
-        John McAslan + Partners
-        <Subheading>архитектор</Subheading>
-      </Fact>
-      <Fact>
-        Группа «ПСН»
-        <Subheading>застройщик</Subheading>
-      </Fact>
-    </Wrapper>
-    <SeparationLine />
-  </Grid>);
+type Props = {
+  details: DetailsType,
+};
+
+export default (props: Props) => {
+  const { details = {} } = props;
+
+  return (
+    <Grid>
+      <Wrapper>
+        <Fact>
+          950
+          <Subheading>предложений</Subheading>
+        </Fact>
+        <Fact>
+          {details.architect}
+          <Subheading>архитектор</Subheading>
+        </Fact>
+        {!!details.developer &&
+          <Fact>
+            Группа «ПСН»
+            <Subheading>застройщик</Subheading>
+          </Fact>}
+      </Wrapper>
+      <SeparationLine />
+    </Grid>
+  );
+};
