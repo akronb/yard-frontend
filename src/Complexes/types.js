@@ -23,19 +23,73 @@ export type LocationType = {
   regionName?: string,
 };
 
-export type ComplexType = {
-  commissioningYear?: number,
-  adjacentTerritory: {
-    area?: number,
-    playgrounds?: number,
-    isAccessOpen?: boolean,
-    isAllowedCars?: boolean,
-    isGreeneryPlanted?: boolean,
+export type detailsType = {
+  accreditors: ?Array<number>,
+  architect?: string,
+  ceilHeight?: {
+    from: number,
+    to: number,
   },
+  commissioningQuarter?: string,
+  commissioningYear?: number,
+  constructionKind?: string,
+  contractorId?: number,
+  contractType?: string,
+  developer?: string,
+  floors?: {
+    from: number,
+    to: number,
+  },
+  // houseKind: Option[ComplexHouseKind],
+  // infrastructureUnits: List[ComplexInfrastructureUnit],
+  // keysIssueDate: Option[LocalDate],
+  maintenanceCosts?: number,
+  parkings?: number,
+  propertyKind?: string,
+  security?: string,
+  startYear?: number,
+  startQuarter?: string,
+  undergroundGarages?: number,
+  withRubbishChute?: boolean,
+  withWasteDisposalRoom?: boolean,
+};
+
+export type adjacentTerritoryType = {
+  area?: number,
+  playgrounds?: number,
+  isAccessOpen?: boolean,
+  isAllowedCars?: boolean,
+  isGreeneryPlanted?: boolean,
+};
+
+export type amenitiesType = Array<string>;
+
+export type ComplexType = {
+  id: string,
   name: string,
-  updatedAt?: string,
-  location: LocationType,
+  slug: string,
   state: string,
+  images: Array<ImagesType>,
+  image?: ImagesType,
+  details: ComplexDetails,
+  note?: string,
+  adjacentTerritory: adjacentTerritoryType,
+  purchaseTimeConditions?: {
+    oralReservation?: number,
+    agreementPreparation?: number,
+    developerAgreement?: number,
+    stateRegistrationPreparation?: number,
+    signing?: number,
+    stateRegistration?: number,
+    documentDelivery?: number,
+    payment?: number,
+  },
+  location: LocationType,
+  installment: {
+    months?: number,
+    initial?: number,
+    overpayment?: number,
+  },
   statistics?: {
     resalePropertiesCount: number,
     price: {
@@ -89,26 +143,22 @@ export type ComplexType = {
       to: number,
     },
   },
-  purchaseTimeConditions?: {
-    oralReservation?: number,
-    agreementPreparation?: number,
-    developerAgreement?: number,
-    stateRegistrationPreparation?: number,
-    signing?: number,
-    stateRegistration?: number,
-    documentDelivery?: number,
-    payment?: number,
+  propertyDefaults?: {
+    // saleOffer: PropertyDefaultSaleOffer,
+    // information: PropertyDefaultInformation
   },
-  commissioningQuarter?: 1,
-  linkedContactIds: ?Array<number>,
   responsibleUser?: {
     id: number,
     departmentId: number,
   },
-  createdByUserId: ?number,
-  id: string,
+  cianId?: number,
+  linkedContactIds: Array<number>,
+  units?: number,
+  amenities: amenitiesType,
+  shortDescription?: string,
+  fullDescription?: string,
+  createdByUserId: number,
   updatedByUserId?: number,
   createdAt: string,
-  images: Array<ImagesType>,
-  accreditors: ?Array<number>,
+  updatedAt?: string,
 };
