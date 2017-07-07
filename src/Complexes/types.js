@@ -23,7 +23,7 @@ export type LocationType = {
   regionName?: string,
 };
 
-export type detailsType = {
+export type DetailsType = {
   accreditors: ?Array<number>,
   architect?: string,
   ceilHeight?: {
@@ -54,7 +54,7 @@ export type detailsType = {
   withWasteDisposalRoom?: boolean,
 };
 
-export type adjacentTerritoryType = {
+export type AdjacentTerritoryType = {
   area?: number,
   playgrounds?: number,
   isAccessOpen?: boolean,
@@ -62,7 +62,7 @@ export type adjacentTerritoryType = {
   isGreeneryPlanted?: boolean,
 };
 
-export type amenitiesType = Array<string>;
+export type AmenitiesType = Array<string>;
 
 export type ComplexType = {
   id: string,
@@ -71,9 +71,9 @@ export type ComplexType = {
   state: string,
   images: Array<ImagesType>,
   image?: ImagesType,
-  details: detailsType,
+  details: DetailsType,
   note?: string,
-  adjacentTerritory: adjacentTerritoryType,
+  adjacentTerritory: AdjacentTerritoryType,
   purchaseTimeConditions?: {
     oralReservation?: number,
     agreementPreparation?: number,
@@ -154,7 +154,7 @@ export type ComplexType = {
   cianId?: number,
   linkedContactIds: Array<number>,
   units?: number,
-  amenities: amenitiesType,
+  amenities: AmenitiesType,
   shortDescription?: string,
   fullDescription?: string,
   createdByUserId: number,
