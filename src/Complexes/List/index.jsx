@@ -41,9 +41,7 @@ class List extends React.Component {
               name={data.name}
               imageId={data.images[0].id}
             >
-              Beautifully appointed residences perched atop Rincon Hill, The Harrison offers
-              unparalleled Bay Bridge and city views within steps of San Francisco’s greatest
-              restaurants, shops, and The Embarcadero.
+              {data.shortDescription}
             </Card>),
           )}
         </Grid>
