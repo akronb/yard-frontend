@@ -71,7 +71,7 @@ export type ComplexType = {
   state: string,
   images: Array<ImagesType>,
   image?: ImagesType,
-  details: ComplexDetails,
+  details: detailsType,
   note?: string,
   adjacentTerritory: adjacentTerritoryType,
   purchaseTimeConditions?: {
