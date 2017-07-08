@@ -3,7 +3,6 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
-import type { AmenitiesType } from '../types';
 import Heading from './Heading';
 
 const Wrapper = styled.div`
@@ -18,7 +17,7 @@ const Text = styled.p`
 `;
 
 type Props = {
-  amenities: AmenitiesType,
+  amenities: Array<string>,
 };
 
 export default (props: Props) => {

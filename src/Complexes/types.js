@@ -24,7 +24,7 @@ export type LocationType = {
 };
 
 export type DetailsType = {
-  accreditors: ?Array<number>,
+  accreditors?: Array<number>,
   architect?: string,
   ceilHeight?: {
     from: number,
@@ -40,9 +40,9 @@ export type DetailsType = {
     from: number,
     to: number,
   },
-  // houseKind: Option[ComplexHouseKind],
-  // infrastructureUnits: List[ComplexInfrastructureUnit],
-  // keysIssueDate: Option[LocalDate],
+  houseKind?: string,
+  infrastructureUnits?: Array<string>,
+  keysIssueDate?: string,
   maintenanceCosts?: number,
   parkings?: number,
   propertyKind?: string,
@@ -62,7 +62,59 @@ export type AdjacentTerritoryType = {
   isGreeneryPlanted?: boolean,
 };
 
-export type AmenitiesType = Array<string>;
+export type StatisticsType = {
+  resalePropertiesCount: number,
+  price: {
+    from: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+    to: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+  },
+  totalResaleArea: {
+    from: number,
+    to: number,
+  },
+  resalePrice: {
+    from: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+    to: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+  },
+  propertiesCount: number,
+  totalPrimaryArea: {
+    from: number,
+    to: number,
+  },
+  primaryPrice: {
+    from: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+    to: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+  },
+  primaryPropertiesCount: number,
+  totalArea: {
+    from: number,
+    to: number,
+  },
+};
 
 export type ComplexType = {
   id: string,
@@ -90,71 +142,15 @@ export type ComplexType = {
     initial?: number,
     overpayment?: number,
   },
-  statistics?: {
-    resalePropertiesCount: number,
-    price: {
-      from: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-      to: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-    },
-    totalResaleArea: {
-      from: number,
-      to: number,
-    },
-    resalePrice: {
-      from: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-      to: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-    },
-    propertiesCount: number,
-    totalPrimaryArea: {
-      from: number,
-      to: number,
-    },
-    primaryPrice: {
-      from: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-      to: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-    },
-    primaryPropertiesCount: number,
-    totalArea: {
-      from: number,
-      to: number,
-    },
-  },
-  propertyDefaults?: {
-    // saleOffer: PropertyDefaultSaleOffer,
-    // information: PropertyDefaultInformation
-  },
+  statistics?: StatisticsType,
   responsibleUser?: {
     id: number,
     departmentId: number,
   },
   cianId?: number,
   linkedContactIds: Array<number>,
-  units?: number,
-  amenities: AmenitiesType,
+  units: ?number,
+  amenities?: Array<string>,
   shortDescription?: string,
   fullDescription?: string,
   createdByUserId: number,

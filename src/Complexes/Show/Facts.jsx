@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import type { DetailsType } from '../types';
 import SeparationLine from './SeparationLine';
 import Heading from './Heading';
+import Pluralizer from '../../Components/Pluralizer';
 
 const Wrapper = styled.div`display: flex;`;
 
@@ -26,23 +27,35 @@ const Fact = styled(Heading)`
 `;
 
 type Props = {
+  units: ?number,
   details: DetailsType,
 };
 
 export default (props: Props) => {
-  const { details = {} } = props;
+  const { details = {}, units } = props;
 
   return (
     <Grid>
       <Wrapper>
-        <Fact>
-          950
-          <Subheading>предложений</Subheading>
-        </Fact>
-        <Fact>
-          {details.architect}
-          <Subheading>архитектор</Subheading>
-        </Fact>
+        {!!units &&
+          units > 0 &&
+          <Fact>
+            {units}
+            <Subheading>
+              <Pluralizer
+                number={units}
+                one="предложение"
+                few="предложения"
+                other="предложений"
+                combine={false}
+              />
+            </Subheading>
+          </Fact>}
+        {!!details.architect &&
+          <Fact>
+            {details.architect}
+            <Subheading>архитектор</Subheading>
+          </Fact>}
         {!!details.developer &&
           <Fact>
             Группа «ПСН»
