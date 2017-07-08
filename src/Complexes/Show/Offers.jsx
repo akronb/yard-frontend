@@ -29,9 +29,7 @@ const CardTitle = styled.h3`
   color: #3e4247;
 `;
 
-const Feature = styled.div`
-  margin-top: 1.5rem;
-`;
+const Feature = styled.div`margin-top: 1.5rem;`;
 
 const Label = styled.div`
   margin: 0px;
@@ -60,10 +58,16 @@ const Button = styled.button`
   font-size: 1rem;
 `;
 
-export default () =>
+type Props = {
+  name: string,
+};
+
+export default (props: Props) =>
   (<Wrapper>
     <Grid>
-      <Title>Предложения в ЖК «Полянка/44»</Title>
+      <Title>
+        Предложения в {props.name}
+      </Title>
       <Row>
         <Col lg={4}>
           <Card>

@@ -50,6 +50,7 @@ export default (props: Props) =>
           one="фотография"
           few="фотографии"
           other="фотографий"
+          combine
         />
       </Button>
     </Grid>

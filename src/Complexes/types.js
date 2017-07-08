@@ -23,72 +23,109 @@ export type LocationType = {
   regionName?: string,
 };
 
-export type ComplexType = {
+export type DetailsType = {
+  accreditors?: Array<number>,
+  architect?: string,
+  ceilHeight?: {
+    from: number,
+    to: number,
+  },
+  commissioningQuarter?: string,
   commissioningYear?: number,
-  adjacentTerritory: {
-    area?: number,
-    playgrounds?: number,
-    isAccessOpen?: boolean,
-    isAllowedCars?: boolean,
-    isGreeneryPlanted?: boolean,
+  constructionKind?: string,
+  contractorId?: number,
+  contractType?: string,
+  developer?: string,
+  floors?: {
+    from: number,
+    to: number,
   },
+  houseKind?: string,
+  infrastructureUnits?: Array<string>,
+  keysIssueDate?: string,
+  maintenanceCosts?: number,
+  parkings?: number,
+  propertyKind?: string,
+  security?: string,
+  startYear?: number,
+  startQuarter?: string,
+  undergroundGarages?: number,
+  withRubbishChute?: boolean,
+  withWasteDisposalRoom?: boolean,
+};
+
+export type AdjacentTerritoryType = {
+  area?: number,
+  playgrounds?: number,
+  isAccessOpen?: boolean,
+  isAllowedCars?: boolean,
+  isGreeneryPlanted?: boolean,
+};
+
+export type StatisticsType = {
+  resalePropertiesCount?: number,
+  price?: {
+    from: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+    to: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+  },
+  totalResaleArea?: {
+    from: number,
+    to: number,
+  },
+  resalePrice?: {
+    from: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+    to: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+  },
+  propertiesCount?: number,
+  totalPrimaryArea?: {
+    from: number,
+    to: number,
+  },
+  primaryPrice?: {
+    from: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+    to: {
+      usd: number,
+      eur: number,
+      rub: number,
+    },
+  },
+  primaryPropertiesCount?: number,
+  totalArea?: {
+    from: number,
+    to: number,
+  },
+};
+
+export type ComplexType = {
+  id: string,
   name: string,
-  updatedAt?: string,
-  location: LocationType,
+  slug: string,
   state: string,
-  statistics?: {
-    resalePropertiesCount: number,
-    price: {
-      from: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-      to: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-    },
-    totalResaleArea: {
-      from: number,
-      to: number,
-    },
-    resalePrice: {
-      from: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-      to: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-    },
-    propertiesCount: number,
-    totalPrimaryArea: {
-      from: number,
-      to: number,
-    },
-    primaryPrice: {
-      from: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-      to: {
-        usd: number,
-        eur: number,
-        rub: number,
-      },
-    },
-    primaryPropertiesCount: number,
-    totalArea: {
-      from: number,
-      to: number,
-    },
-  },
+  images: Array<ImagesType>,
+  image?: ImagesType,
+  details: DetailsType,
+  note?: string,
+  adjacentTerritory: AdjacentTerritoryType,
   purchaseTimeConditions?: {
     oralReservation?: number,
     agreementPreparation?: number,
@@ -99,16 +136,25 @@ export type ComplexType = {
     documentDelivery?: number,
     payment?: number,
   },
-  commissioningQuarter?: 1,
-  linkedContactIds: ?Array<number>,
+  location: LocationType,
+  installment: {
+    months?: number,
+    initial?: number,
+    overpayment?: number,
+  },
+  statistics?: StatisticsType,
   responsibleUser?: {
     id: number,
     departmentId: number,
   },
-  createdByUserId: ?number,
-  id: string,
+  cianId?: number,
+  linkedContactIds: Array<number>,
+  units: ?number,
+  amenities?: Array<string>,
+  shortDescription?: string,
+  fullDescription?: string,
+  createdByUserId: number,
   updatedByUserId?: number,
   createdAt: string,
-  images: Array<ImagesType>,
-  accreditors: ?Array<number>,
+  updatedAt?: string,
 };

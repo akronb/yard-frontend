@@ -41,8 +41,16 @@ class Show extends React.Component {
   }
 
   render() {
-    const { name, location = {}, images = [], statistics = {} } = this.state;
-    const { propertiesCount } = statistics;
+    const {
+      name,
+      units,
+      fullDescription,
+      location = {},
+      images = [],
+      statistics = {},
+      details = {},
+      amenities = [],
+    } = this.state;
 
     return (
       <main>
@@ -54,14 +62,14 @@ class Show extends React.Component {
         </Wrapper>
         <Carousel images={images} />
         <Wrapper>
-          <Facts />
-          <Features propertiesCount={propertiesCount} />
-          <Description />
-          <Infrastructure />
+          <Facts details={details} units={units} />
+          <Features statistics={statistics} details={details} />
+          {!!fullDescription && <Description fullDescription={fullDescription} />}
+          {amenities.length > 0 && <Infrastructure amenities={amenities} />}
         </Wrapper>
-        <Offers />
+        <Offers name={name} />
         <Guide />
-        <Location />
+        {Object.keys(location).length !== 0 && <Location location={location} />}
       </main>
     );
   }

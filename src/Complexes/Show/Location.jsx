@@ -3,14 +3,15 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
-const PUBLIC_URL: string = process.env.PUBLIC_URL || '';
+import type { LocationType } from '../types';
+import MapBox from './MapBox';
 
 const Wrapper = styled.div`
   padding-bottom: 4rem;
   background-color: #fff;
 `;
 
-const Location = styled.img`
+const Location = styled(MapBox)`
   width: 100%;
   height: 302px;
   margin-top: -9.75rem;
@@ -43,12 +44,16 @@ const Distance = styled.p`
   color: #a9afb6;
 `;
 
-export default () =>
+type Props = {
+  location: LocationType,
+};
+
+export default (props: Props) =>
   (<Wrapper>
     <Grid>
       <Row>
         <Col lg={6}>
-          <Location src={`${PUBLIC_URL}/img/map.png`} alt="Жилой комплекс «Полянка/44»" />
+          <Location location={props.location} />
         </Col>
         <Col lg={6}>
           <Places>
