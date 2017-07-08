@@ -36,7 +36,7 @@
     "flow": "flow",
     "flow:install": "flow-typed install",
     "deploy": "yarn build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN",
-    "prepush": "yarn lint"
+    "prepush": "yarn lint && yarn flow"
   },
   "now": {
     "name": "build",
