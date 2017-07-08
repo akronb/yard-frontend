@@ -11,8 +11,7 @@ type Props = {
 };
 
 const Map = ReactMapboxGl({
-  accessToken:
-    'pk.eyJ1IjoianVzdHVzZWJyYWluIiwiYSI6ImNpbHV1dWlmYTAwNmp2Zm02NjZkZmIybGkifQ.feSAgXjbU00mlAjBQyv1lQ',
+  accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
 });
 
 export default (props: Props) => {
