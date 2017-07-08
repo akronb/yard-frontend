@@ -63,8 +63,8 @@ export type AdjacentTerritoryType = {
 };
 
 export type StatisticsType = {
-  resalePropertiesCount: number,
-  price: {
+  resalePropertiesCount?: number,
+  price?: {
     from: {
       usd: number,
       eur: number,
@@ -76,11 +76,11 @@ export type StatisticsType = {
       rub: number,
     },
   },
-  totalResaleArea: {
+  totalResaleArea?: {
     from: number,
     to: number,
   },
-  resalePrice: {
+  resalePrice?: {
     from: {
       usd: number,
       eur: number,
@@ -92,12 +92,12 @@ export type StatisticsType = {
       rub: number,
     },
   },
-  propertiesCount: number,
-  totalPrimaryArea: {
+  propertiesCount?: number,
+  totalPrimaryArea?: {
     from: number,
     to: number,
   },
-  primaryPrice: {
+  primaryPrice?: {
     from: {
       usd: number,
       eur: number,
@@ -109,8 +109,8 @@ export type StatisticsType = {
       rub: number,
     },
   },
-  primaryPropertiesCount: number,
-  totalArea: {
+  primaryPropertiesCount?: number,
+  totalArea?: {
     from: number,
     to: number,
   },
