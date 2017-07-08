@@ -8,11 +8,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Installation
 
-`yarn install` install dependencies
+`yarn install` installs dependencies
 
-`yarn flow:install` install Flow library definitions for dependencies
+`yarn flow:install` installs Flow library definitions for dependencies
 
-### Linting
+### Usage
+
+`yarn start` runs the app in development mode
+
+`yarn build` builds the app for production to the build folder.
 
 `yarn lint` runs ESLint
 
