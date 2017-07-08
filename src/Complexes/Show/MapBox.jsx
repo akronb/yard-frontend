@@ -10,7 +10,7 @@ type Props = {
   location: LocationType,
 };
 
-const Map = ReactMapboxGl({
+const MapBox = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
 });
 
@@ -18,7 +18,7 @@ export default (props: Props) => {
   const { location = {} } = props;
 
   return (
-    <Map
+    <MapBox
       style="mapbox://styles/mapbox/light-v9"
       zoom={[16]}
       center={[location.longitude, location.latitude]}
@@ -27,6 +27,6 @@ export default (props: Props) => {
       <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
         <Feature coordinates={[location.longitude, location.latitude]} />
       </Layer>
-    </Map>
+    </MapBox>
   );
 };

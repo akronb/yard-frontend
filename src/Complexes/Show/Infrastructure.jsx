@@ -28,10 +28,10 @@ export default (props: Props) => {
       <Heading>Инфраструктура</Heading>
       <Wrapper>
         <Row>
-          {amenities.map(data =>
+          {amenities.map(amenity =>
             (<Col lg={2}>
               <Text>
-                {data}
+                {amenity}
               </Text>
             </Col>),
           )}

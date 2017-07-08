@@ -4,14 +4,14 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 import type { LocationType } from '../types';
-import Map from './Map';
+import MapBox from './MapBox';
 
 const Wrapper = styled.div`
   padding-bottom: 4rem;
   background-color: #fff;
 `;
 
-const Location = styled(Map)`
+const Location = styled(MapBox)`
   width: 100%;
   height: 302px;
   margin-top: -9.75rem;
