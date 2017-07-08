@@ -3,6 +3,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import type { LocationType } from '../types';
 import Map from './Map';
 
 const Wrapper = styled.div`
@@ -43,7 +44,11 @@ const Distance = styled.p`
   color: #a9afb6;
 `;
 
-export default props =>
+type Props = {
+  location: LocationType,
+};
+
+export default (props: Props) =>
   (<Wrapper>
     <Grid>
       <Row>
