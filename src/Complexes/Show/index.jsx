@@ -69,7 +69,7 @@ class Show extends React.Component {
         </Wrapper>
         <Offers name={name} />
         <Guide />
-        <Location />
+        {Object.keys(location).length !== 0 && <Location location={location} />}
       </main>
     );
   }
