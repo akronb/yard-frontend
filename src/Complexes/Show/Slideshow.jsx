@@ -39,12 +39,15 @@ class Slideshow extends React.Component {
     return { transform: `translateX(${(i - this.state.activeItem) * 100}%)` };
   }
 
-  handleClick = e => console.log('It works!');
+  handleClick = (e) => {
+    e.preventDefault();
+    console.log('It works!');
+  };
 
   render() {
     return (
       <Gallery onClick={this.props.closePortal}>
-        {this.props.images.map((image, i) =>
+        {this.props.images.map(image =>
           (<Slide
             // onClick={this.slide(i)}
             // style={this.translate(i)}
