@@ -2,9 +2,11 @@
 import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
+import Portal from 'react-portal';
 
 import type { ImagesType } from '../types';
 import { getImageUrl } from '../../utils';
+import Slideshow from './Slideshow';
 import Pluralizer from '../../Components/Pluralizer';
 
 const Carousel = styled.div`height: 400px;`;
@@ -35,23 +37,35 @@ const Button = styled.button`
 `;
 
 type Props = {
+  name: string,
   images: Array<ImagesType>,
 };
 
-export default (props: Props) =>
-  (<Carousel>
-    <Wrapper>
-      {props.images.map(data => <Photo src={getImageUrl(data.id, 512)} key={data.id} />)}
-    </Wrapper>
-    <Grid>
-      <Button>
-        <Pluralizer
-          number={props.images.length}
-          one="фотография"
-          few="фотографии"
-          other="фотографий"
-          combine
-        />
-      </Button>
-    </Grid>
-  </Carousel>);
+export default (props: Props) => {
+  const ModalButton = (
+    <Button>
+      <Pluralizer
+        number={props.images.length}
+        one="фотография"
+        few="фотографии"
+        other="фотографий"
+        combine
+      />
+    </Button>
+  );
+
+  return (
+    <Carousel>
+      <Wrapper>
+        {props.images.map(image =>
+          <Photo src={getImageUrl(image.id, 512)} key={image.id} alt={props.name} />,
+        )}
+      </Wrapper>
+      <Grid>
+        <Portal closeOnEsc openByClickOn={ModalButton}>
+          <Slideshow images={props.images} name={props.name} />
+        </Portal>
+      </Grid>
+    </Carousel>
+  );
+};

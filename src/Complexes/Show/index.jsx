@@ -60,7 +60,7 @@ class Show extends React.Component {
         <Wrapper>
           <Header name={name} location={location} />
         </Wrapper>
-        <Carousel images={images} />
+        <Carousel images={images} name={name} />
         <Wrapper>
           <Facts details={details} units={units} />
           <Features statistics={statistics} details={details} />
