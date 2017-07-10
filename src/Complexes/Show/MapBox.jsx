@@ -20,7 +20,7 @@ export default (props: Props) => {
   return (
     <MapBox
       style="mapbox://styles/mapbox/light-v9"
-      zoom={[16]}
+      zoom={[11]}
       center={[location.longitude, location.latitude]}
       {...props}
     >
