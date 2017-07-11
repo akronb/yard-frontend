@@ -14,21 +14,25 @@ const Gallery = styled.div`
   padding-top: 4rem;
   padding-bottom: 3.5rem;
   text-align: center;
+  height: 100vh;
 `;
 
-const Wrapper = styled.div`display: flex;`;
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
 
 const Slide = styled.img`
-  flex-shrink: 0;
-  width: 512px;
-  height: 512px;
-  margin-right: 4rem;
-  z-index: 999999;
+  width: 80vw;
+  height: 40vh;
+  &:first-child {
+    width: 90vw;
+  }
 `;
 
 const Description = styled.div`
   display: inline-block;
-  margin: 1.5rem auto 0;
+  margin-top: 1.5rem;
   font-size: 1rem;
   line-height: 1.38rem;
   color: #a9afb6;
@@ -43,19 +47,18 @@ class Slideshow extends React.Component {
   }
 
   slide = (i) => {
-    console.log(`${i} / ${this.state.activeSlide}`);
     if (i >= 0 && i < this.props.images.length) this.setState({ activeSlide: i });
   };
 
   translate(i) {
     if (i === this.state.activeSlide) {
       return {
-        transform: `translateX(${(i - this.state.activeSlide) * 100}%)`,
+        transform: `translateX(${(i - this.state.activeSlide) * 90}vw)`,
         transition: '.2s ease-in-out',
       };
     }
     return {
-      transform: `translateX(${(i - this.state.activeSlide) * 100}%)`,
+      transform: `translateX(${(i - this.state.activeSlide) * 90}vw)`,
       transition: '.2s ease-in-out',
       cursor: 'pointer',
     };
@@ -63,7 +66,6 @@ class Slideshow extends React.Component {
 
   handleClick = i => (e) => {
     e.stopPropagation();
-
     this.slide(i);
   };
 
