@@ -14,19 +14,24 @@ const Gallery = styled.div`
   padding-top: 4rem;
   padding-bottom: 3.5rem;
   text-align: center;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100%;
+  transition: transform .2s ease-in-out;
 `;
 
 const Slide = styled.img`
-  width: 80vw;
-  height: 40vh;
-  &:first-child {
-    width: 90vw;
+  height: ${100 / 1.2}%;
+  width: auto;
+  transition: .2s ease-in-out;
+  &:not(:last-child) {
+    margin-right: 4rem;
   }
 `;
 
@@ -43,55 +48,100 @@ class Slideshow extends React.Component {
     super(props);
     this.state = {
       activeSlide: 0,
+      wrapperHeight: 0,
     };
   }
 
-  slide = (i) => {
-    if (i >= 0 && i < this.props.images.length) this.setState({ activeSlide: i });
+  componentDidMount() {
+    this.getWrapperHeight();
+  }
+
+  getWrapperHeight() {
+    this.setState({ wrapperHeight: this.wrapper.clientHeight });
+  }
+
+  calcWidth(index, actualHeight) {
+    const { width: originalWidth, height: originalHeight } = this.props.images[index];
+    // prettier-ignore
+    return (actualHeight / originalHeight) * originalWidth;
+  }
+
+  centerSlide() {
+    const ident = this.props.images.reduce((accumulator, currentValue, currentIndex) => {
+      const margin = 64;
+      const { activeSlide, wrapperHeight } = this.state;
+
+      if (currentIndex === activeSlide) {
+        // prettier-ignore
+        return accumulator + (this.calcWidth(currentIndex, wrapperHeight) * 0.5);
+      }
+      if (currentIndex < activeSlide) {
+        return accumulator + margin + this.calcWidth(currentIndex, wrapperHeight / 1.2);
+      }
+      return accumulator;
+    }, 0);
+
+    return Math.round(ident);
+  }
+
+  slide = (index) => {
+    const imagesNum = this.props.images.length;
+
+    if (index < 0) this.setState({ activeSlide: imagesNum - 1 });
+    else if (index >= imagesNum) this.setState({ activeSlide: 0 });
+    else this.setState({ activeSlide: index });
   };
 
-  translate(i) {
-    if (i === this.state.activeSlide) {
+  changeSlide(index) {
+    if (index === this.state.activeSlide) {
       return {
-        transform: `translateX(${(i - this.state.activeSlide) * 90}vw)`,
-        transition: '.2s ease-in-out',
+        height: '100%',
       };
     }
     return {
-      transform: `translateX(${(i - this.state.activeSlide) * 90}vw)`,
-      transition: '.2s ease-in-out',
       cursor: 'pointer',
     };
   }
 
-  handleClick = i => (e) => {
-    e.stopPropagation();
-    this.slide(i);
+  moveSlide() {
+    return {
+      transform: `translateX(calc(50% - ${this.centerSlide()}px))`,
+    };
+  }
+
+  handleClick = index => (event) => {
+    event.stopPropagation();
+    this.slide(index);
   };
 
-  handleKeyDown = (e) => {
-    e.stopPropagation();
+  handleKeyDown = (event) => {
+    event.stopPropagation();
 
-    if (e.keyCode === 39) this.slide(this.state.activeSlide + 1);
-    if (e.keyCode === 37) this.slide(this.state.activeSlide - 1);
+    if (event.keyCode === 39) this.slide(this.state.activeSlide + 1);
+    if (event.keyCode === 37) this.slide(this.state.activeSlide - 1);
   };
 
   render() {
     return (
       <Gallery onClick={this.props.closePortal}>
         <EventListener target={document} onKeyDown={this.handleKeyDown} />
-        <Wrapper>
+        <Wrapper
+          style={this.moveSlide()}
+          innerRef={(comp) => {
+            this.wrapper = comp;
+          }}
+        >
           {this.props.images.map((image, i) =>
             (<Slide
-              style={this.translate(i)}
-              onClick={this.handleClick(i)}
               src={getImageUrl(image.id, 1024)}
+              style={this.changeSlide(i)}
+              onClick={this.handleClick(i)}
               key={image.id}
               alt={this.props.name}
             />),
           )}
         </Wrapper>
-        <Description onClick={this.handleClick}>
+        <Description>
           {this.state.activeSlide + 1}/{this.props.images.length} {this.props.name}
         </Description>
       </Gallery>
