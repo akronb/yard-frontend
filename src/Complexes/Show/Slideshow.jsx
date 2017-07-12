@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import EventListener from 'react-event-listener';
+// import EventListener from 'react-event-listener';
 
 import { getImageUrl } from '../../utils';
 
