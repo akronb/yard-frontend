@@ -27,7 +27,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * [styled-components](https://github.com/styled-components/styled-components)
 * [react-router](https://github.com/ReactTraining/react-router)
 * [react-flexbox-grid](https://github.com/roylee0704/react-flexbox-grid)
-* [react-event-listener](https://github.com/oliviertassinari/react-event-listener)
 * [react-portal](https://github.com/tajo/react-portal)
 * [react-helmet](https://github.com/nfl/react-helmet)
 * [react-mapbox-gl](https://github.com/alex3165/react-mapbox-gl)
