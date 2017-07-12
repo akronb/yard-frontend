@@ -9,14 +9,15 @@ const Gallery = styled.div`
   position: fixed;
   top: 0px;
   bottom: 0px;
-  left: 0px;
-  right: 0px;
+  width: 100%;
   padding-top: 4rem;
   padding-bottom: 3.5rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  text-align: center;
+  opacity: 0;
+  transition: .1s ease-in-out .2s;
 `;
 
 const Wrapper = styled.div`
@@ -28,14 +29,13 @@ const Wrapper = styled.div`
 
 const Slide = styled.img`
   height: 100%;
-  transition: .2s ease-in-out;
+  transform-origin: center bottom;
 `;
 
 const Description = styled.div`
   display: inline-block;
   margin-top: 1.5rem;
   font-size: 1rem;
-  line-height: 1.38rem;
   color: #a9afb6;
 `;
 
@@ -44,19 +44,40 @@ class Slideshow extends React.Component {
     super(props);
     this.state = {
       activeSlide: 0,
+      wrapperHeight: 0,
+      justOpened: true,
     };
   }
 
   componentDidMount() {
-    document.addEventListener('onKeyDown', this.handleKeyDown);
+    this.getWrapperHeight();
+    window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('resize', this.getWrapperHeight);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('onKeyDown', this.handleKeyDown);
+    window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('resize', this.getWrapperHeight);
+  }
+
+  getWrapperHeight = () => {
+    this.setState({ wrapperHeight: this.wrapper.clientHeight });
+  };
+
+  calcWidthDiff(scaleRatio) {
+    const index = this.state.activeSlide;
+    const { width: originalWidth, height: originalHeight } = this.props.images[index];
+    const actualHeight = this.state.wrapperHeight;
+    // prettier-ignore
+    const actualWidth = (actualHeight / originalHeight) * originalWidth;
+    // prettier-ignore
+    return (actualWidth * (1 - scaleRatio)) / 2;
   }
 
   slide = (index) => {
     const imagesNum = this.props.images.length;
+
+    if (this.state.justOpened) this.setState({ justOpened: false });
 
     if (index < 0) this.setState({ activeSlide: imagesNum - 1 });
     else if (index >= imagesNum) this.setState({ activeSlide: 0 });
@@ -65,24 +86,31 @@ class Slideshow extends React.Component {
 
   changeSlide(index) {
     const offset = this.state.activeSlide * -100;
+    const scaleRatio = 0.8;
+    const scaleDiff = this.calcWidthDiff(0.8);
+    const transitionStyle = {
+      transition: 'transform .2s linear',
+    };
+    let mainStyle;
 
     if (index === this.state.activeSlide) {
-      return {
-        transform: `translateX(calc(${offset}% + 50vw - 50% - ${1}px))`,
+      mainStyle = {
+        transform: `translateX(calc(${offset}% + 50vw - 50%))`,
       };
-    }
-    if (index > this.state.activeSlide) {
-      return {
-        transform: `translateX(calc(${offset}% + 50vw - 50% + 4rem - ${1}px)) scale(0.8)`,
-        transformOrigin: 'center bottom',
+    } else if (index > this.state.activeSlide) {
+      mainStyle = {
+        transform: `translateX(calc(${offset}% + 50vw - 50% + 4rem - ${scaleDiff}px)) scale(${scaleRatio})`,
+        opacity: '.5',
+      };
+    } else {
+      mainStyle = {
+        transform: `translateX(calc(${offset}% + 50vw - 50% - 4rem + ${scaleDiff}px)) scale(${scaleRatio})`,
         opacity: '.5',
       };
     }
-    return {
-      transform: `translateX(calc(${offset}% + 50vw - 50% - 4rem - ${1}px)) scale(0.8)`,
-      transformOrigin: 'center bottom',
-      opacity: '.5',
-    };
+
+    if (this.state.justOpened) return mainStyle;
+    return { ...mainStyle, ...transitionStyle };
   }
 
   handleClick = index => (event) => {
@@ -99,8 +127,12 @@ class Slideshow extends React.Component {
 
   render() {
     return (
-      <Gallery onClick={this.props.closePortal}>
-        <Wrapper>
+      <Gallery style={{ opacity: 1 }} onClick={this.props.closePortal}>
+        <Wrapper
+          innerRef={(comp) => {
+            this.wrapper = comp;
+          }}
+        >
           {this.props.images.map((image, i) =>
             (<Slide
               src={getImageUrl(image.id, 1024)}
