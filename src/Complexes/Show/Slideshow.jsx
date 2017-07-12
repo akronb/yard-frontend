@@ -22,13 +22,12 @@ const Gallery = styled.div`
 const Wrapper = styled.div`
   display: flex;
   align-items: flex-end;
+  flex-grow: 0;
   height: 100%;
-  transition: transform .2s ease-in-out;
 `;
 
 const Slide = styled.img`
-  height: ${100 / 1.2}%;
-  width: auto;
+  height: 100%;
   transition: .2s ease-in-out;
 `;
 
@@ -45,54 +44,15 @@ class Slideshow extends React.Component {
     super(props);
     this.state = {
       activeSlide: 0,
-      wrapperHeight: 0,
     };
   }
 
   componentDidMount() {
-    this.getWrapperHeight();
-    window.addEventListener('resize', this.getWrapperHeight);
+    document.addEventListener('onKeyDown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.getWrapperHeight);
-  }
-
-  getWrapperHeight = () => {
-    this.setState({ wrapperHeight: this.wrapper.clientHeight });
-  };
-
-  calcWidth(index, actualHeight) {
-    const { width: originalWidth, height: originalHeight } = this.props.images[index];
-    // prettier-ignore
-    return (actualHeight / originalHeight) * originalWidth;
-  }
-
-  centerSlide() {
-    const ident = this.props.images.reduce((accumulator, currentValue, currentIndex) => {
-      const margin = 64;
-      const { activeSlide, wrapperHeight } = this.state;
-      const width = this.calcWidth(currentIndex, wrapperHeight / 1.2);
-
-      if (currentIndex === activeSlide) {
-        // prettier-ignore
-        return accumulator + ((width * 0.5));
-      }
-      if (currentIndex === activeSlide - 1) {
-        // prettier-ignore
-        const widthDiff = ((width * 1.2) - width) / 2;
-        return (
-          // prettier-ignore
-          (accumulator + margin + width + widthDiff) - 10
-        );
-      }
-      if (currentIndex < activeSlide - 1) {
-        return accumulator + margin + width;
-      }
-      return accumulator;
-    }, 0);
-
-    return Math.round(ident);
+    document.removeEventListener('onKeyDown', this.handleKeyDown);
   }
 
   slide = (index) => {
@@ -104,36 +64,24 @@ class Slideshow extends React.Component {
   };
 
   changeSlide(index) {
-    const width = this.calcWidth(this.state.activeSlide, this.state.wrapperHeight);
-    // prettier-ignore
-    const widthDiff = (width * 1.2) - width;
+    const offset = this.state.activeSlide * -100;
 
     if (index === this.state.activeSlide) {
       return {
-        transform: 'scale(1.2)',
+        transform: `translateX(calc(${offset}% + 50vw - 50% - ${1}px))`,
+      };
+    }
+    if (index > this.state.activeSlide) {
+      return {
+        transform: `translateX(calc(${offset}% + 50vw - 50% + 4rem - ${1}px)) scale(0.8)`,
         transformOrigin: 'center bottom',
-      };
-    }
-    if (index === this.state.activeSlide + 1) {
-      return {
-        // prettier-ignore
-        marginLeft: `${54 + (widthDiff / 2)}px`,
-      };
-    }
-    if (index === this.state.activeSlide - 1) {
-      return {
-        // prettier-ignore
-        marginRight: `${54 + (widthDiff / 2)}px`,
+        opacity: '.5',
       };
     }
     return {
-      marginRight: '64px',
-    };
-  }
-
-  moveSlide() {
-    return {
-      transform: `translateX(calc(50% - ${this.centerSlide()}px))`,
+      transform: `translateX(calc(${offset}% + 50vw - 50% - 4rem - ${1}px)) scale(0.8)`,
+      transformOrigin: 'center bottom',
+      opacity: '.5',
     };
   }
 
@@ -152,13 +100,7 @@ class Slideshow extends React.Component {
   render() {
     return (
       <Gallery onClick={this.props.closePortal}>
-        <EventListener target={document} onKeyDown={this.handleKeyDown} />
-        <Wrapper
-          style={this.moveSlide()}
-          innerRef={(comp) => {
-            this.wrapper = comp;
-          }}
-        >
+        <Wrapper>
           {this.props.images.map((image, i) =>
             (<Slide
               src={getImageUrl(image.id, 1024)}
