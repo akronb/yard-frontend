@@ -30,9 +30,6 @@ const Slide = styled.img`
   height: ${100 / 1.2}%;
   width: auto;
   transition: .2s ease-in-out;
-  &:not(:last-child) {
-    margin-right: 4rem;
-  }
 `;
 
 const Description = styled.div`
@@ -54,11 +51,16 @@ class Slideshow extends React.Component {
 
   componentDidMount() {
     this.getWrapperHeight();
+    window.addEventListener('resize', this.getWrapperHeight);
   }
 
-  getWrapperHeight() {
-    this.setState({ wrapperHeight: this.wrapper.clientHeight });
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.getWrapperHeight);
   }
+
+  getWrapperHeight = () => {
+    this.setState({ wrapperHeight: this.wrapper.clientHeight });
+  };
 
   calcWidth(index, actualHeight) {
     const { width: originalWidth, height: originalHeight } = this.props.images[index];
@@ -70,13 +72,22 @@ class Slideshow extends React.Component {
     const ident = this.props.images.reduce((accumulator, currentValue, currentIndex) => {
       const margin = 64;
       const { activeSlide, wrapperHeight } = this.state;
+      const width = this.calcWidth(currentIndex, wrapperHeight / 1.2);
 
       if (currentIndex === activeSlide) {
         // prettier-ignore
-        return accumulator + (this.calcWidth(currentIndex, wrapperHeight) * 0.5);
+        return accumulator + ((width * 0.5));
       }
-      if (currentIndex < activeSlide) {
-        return accumulator + margin + this.calcWidth(currentIndex, wrapperHeight / 1.2);
+      if (currentIndex === activeSlide - 1) {
+        // prettier-ignore
+        const widthDiff = ((width * 1.2) - width) / 2;
+        return (
+          // prettier-ignore
+          (accumulator + margin + width + widthDiff) - 10
+        );
+      }
+      if (currentIndex < activeSlide - 1) {
+        return accumulator + margin + width;
       }
       return accumulator;
     }, 0);
@@ -93,13 +104,30 @@ class Slideshow extends React.Component {
   };
 
   changeSlide(index) {
+    const width = this.calcWidth(this.state.activeSlide, this.state.wrapperHeight);
+    // prettier-ignore
+    const widthDiff = (width * 1.2) - width;
+
     if (index === this.state.activeSlide) {
       return {
-        height: '100%',
+        transform: 'scale(1.2)',
+        transformOrigin: 'center bottom',
+      };
+    }
+    if (index === this.state.activeSlide + 1) {
+      return {
+        // prettier-ignore
+        marginLeft: `${54 + (widthDiff / 2)}px`,
+      };
+    }
+    if (index === this.state.activeSlide - 1) {
+      return {
+        // prettier-ignore
+        marginRight: `${54 + (widthDiff / 2)}px`,
       };
     }
     return {
-      cursor: 'pointer',
+      marginRight: '64px',
     };
   }
 
