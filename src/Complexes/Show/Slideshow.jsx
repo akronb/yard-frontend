@@ -27,6 +27,10 @@ const Wrapper = styled.div`
 const Slide = styled.img`
   height: 100%;
   transform-origin: center bottom;
+  transition: opacity .2s ease-in-out;
+  &:hover {
+    opacity: 1 !important;
+  }
 `;
 
 const Description = styled.div`
@@ -86,7 +90,7 @@ class Slideshow extends React.Component {
     const scaleRatio = 0.8;
     const scaleDiff = this.calcWidthDiff(0.8);
     const transitionStyle = {
-      transition: 'transform .2s linear',
+      transition: 'opacity .2s ease-in-out, transform .2s linear',
     };
     let mainStyle;
 
@@ -98,11 +102,13 @@ class Slideshow extends React.Component {
       mainStyle = {
         transform: `translateX(calc(${offset}% + 50vw - 50% + 4rem - ${scaleDiff}px)) scale(${scaleRatio})`,
         opacity: '.5',
+        cursor: 'pointer',
       };
     } else {
       mainStyle = {
         transform: `translateX(calc(${offset}% + 50vw - 50% - 4rem + ${scaleDiff}px)) scale(${scaleRatio})`,
         opacity: '.5',
+        cursor: 'pointer',
       };
     }
 
