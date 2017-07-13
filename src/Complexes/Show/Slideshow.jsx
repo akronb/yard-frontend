@@ -40,7 +40,7 @@ class Slideshow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeSlide: 0,
+      activeSlide: this.props.activeSlide || 0,
       wrapperHeight: 0,
       justOpened: true,
     };

@@ -17,7 +17,15 @@ const Wrapper = styled.div`
   height: 400px;
 `;
 
-const Photo = styled.img`max-height: 400px;`;
+const Photo = styled.img`
+  max-height: 400px;
+  transition: .15s ease-in-out;
+  opacity: 1;
+  cursor: pointer;
+  &:hover {
+    opacity: .8;
+  }
+`;
 
 const Button = styled.button`
   position: relative;
@@ -57,8 +65,16 @@ export default (props: Props) => {
   return (
     <Carousel>
       <Wrapper>
-        {props.images.map(image =>
-          <Photo src={getImageUrl(image.id, 512)} key={image.id} alt={props.name} />,
+        {props.images.map((image, index) =>
+          (<Portal
+            closeOnEsc
+            openByClickOn={
+              <Photo src={getImageUrl(image.id, 512)} key={image.id} alt={props.name} />
+            }
+            key={image.id}
+          >
+            <Slideshow images={props.images} name={props.name} activeSlide={index} />
+          </Portal>),
         )}
       </Wrapper>
       <Grid>
