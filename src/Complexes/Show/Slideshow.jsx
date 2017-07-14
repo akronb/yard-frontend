@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { getImageUrl } from '../../utils';
 
 const Gallery = styled.div`
-  background-color: rgba(17, 17, 17, 0.95);
   position: fixed;
   top: 0px;
   bottom: 0px;
@@ -16,14 +15,12 @@ const Gallery = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   text-align: center;
-  opacity: 0;
-  transition: .1s ease-in-out .2s;
+  background-color: rgba(17, 17, 17, 0.95);
 `;
 
 const Wrapper = styled.div`
   display: flex;
   align-items: flex-end;
-  flex-grow: 0;
   height: 100%;
 `;
 
@@ -43,7 +40,7 @@ class Slideshow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeSlide: 0,
+      activeSlide: this.props.activeSlide || 0,
       wrapperHeight: 0,
       justOpened: true,
     };
@@ -127,7 +124,7 @@ class Slideshow extends React.Component {
 
   render() {
     return (
-      <Gallery style={{ opacity: 1 }} onClick={this.props.closePortal}>
+      <Gallery onClick={this.props.closePortal}>
         <Wrapper
           innerRef={(comp) => {
             this.wrapper = comp;
