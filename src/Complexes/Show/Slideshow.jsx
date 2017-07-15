@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import EventListener from 'react-event-listener';
 
 import { getImageUrl } from '../../utils';
 
@@ -16,6 +15,9 @@ const Gallery = styled.div`
   justify-content: flex-end;
   text-align: center;
   background-color: rgba(17, 17, 17, 0.95);
+  @media (max-width: 920px) {
+    padding: 0;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -25,8 +27,14 @@ const Wrapper = styled.div`
 `;
 
 const Slide = styled.img`
-  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
   transform-origin: center bottom;
+  @media (max-width: 920px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
 `;
 
 const Description = styled.div`
@@ -34,6 +42,50 @@ const Description = styled.div`
   margin-top: 1.5rem;
   font-size: 1rem;
   color: #a9afb6;
+  @media (max-width: 920px) {
+    display: none;
+  }
+`;
+
+const Control = styled.div`
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  z-index: 100;
+  cursor: pointer;
+  &:hover {
+    background: rgba(0, 0, 0, .15);
+  }
+  @media (min-width: 920px) {
+    display: none;
+  }
+`;
+
+const ControlPrev = styled(Control)`
+  left: 0;
+`;
+
+const ControlNext = styled(Control)`
+  right: 0;
+`;
+
+const Arrow = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 15px;
+  width: 15px;
+  border: 1px solid #fff;
+  border-width: 2px 2px 0 0;
+`;
+
+const ArrowRight = styled(Arrow)`
+  transform: translate(-50%, -50%) rotate(45deg);
+`;
+
+const ArrowLeft = styled(Arrow)`
+  transform: translate(-50%, -50%) rotate(225deg);
 `;
 
 class Slideshow extends React.Component {
@@ -41,6 +93,7 @@ class Slideshow extends React.Component {
     super(props);
     this.state = {
       activeSlide: this.props.activeSlide || 0,
+      windowWidth: 0,
       wrapperHeight: 0,
       justOpened: true,
     };
@@ -59,6 +112,7 @@ class Slideshow extends React.Component {
 
   getWrapperHeight = () => {
     this.setState({ wrapperHeight: this.wrapper.clientHeight });
+    this.setState({ windowWidth: window.innerWidth });
   };
 
   calcWidthDiff(scaleRatio) {
@@ -82,6 +136,7 @@ class Slideshow extends React.Component {
   };
 
   changeSlide(index) {
+    const mobileOffset = (index - this.state.activeSlide) * 100;
     const offset = this.state.activeSlide * -100;
     const scaleRatio = 0.8;
     const scaleDiff = this.calcWidthDiff(0.8);
@@ -90,6 +145,11 @@ class Slideshow extends React.Component {
     };
     let mainStyle;
 
+    if (this.state.windowWidth <= 920) {
+      return {
+        transform: `translate(calc(${mobileOffset}vw - 50%), -50%)`,
+      };
+    }
     if (index === this.state.activeSlide) {
       mainStyle = {
         transform: `translateX(calc(${offset}% + 50vw - 50%))`,
@@ -125,6 +185,12 @@ class Slideshow extends React.Component {
   render() {
     return (
       <Gallery onClick={this.props.closePortal}>
+        <ControlPrev onClick={this.handleClick(this.state.activeSlide - 1)}>
+          <ArrowLeft />
+        </ControlPrev>
+        <ControlNext onClick={this.handleClick(this.state.activeSlide + 1)}>
+          <ArrowRight />
+        </ControlNext>
         <Wrapper
           innerRef={(comp) => {
             this.wrapper = comp;
