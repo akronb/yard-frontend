@@ -43,7 +43,13 @@ const Description = styled.div`
   font-size: 1rem;
   color: #a9afb6;
   @media (max-width: 920px) {
-    display: none;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: .125rem .25rem;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .9);
+    background-color: rgba(0, 0, 0, .5);
   }
 `;
 
@@ -86,6 +92,35 @@ const ArrowRight = styled(Arrow)`
 
 const ArrowLeft = styled(Arrow)`
   transform: translate(-50%, -50%) rotate(225deg);
+`;
+
+const Close = styled.div`
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 18px;
+  height: 18px;
+  padding: 16px;
+  z-index: 200;
+  cursor: pointer;
+  &:hover {
+    background: rgba(0, 0, 0, .15);
+  }
+  &:before,
+  &:after {
+    position: absolute;
+    left: 24px;
+    content: ' ';
+    height: 21px;
+    width: 2px;
+    background-color: #fff;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
 `;
 
 class Slideshow extends React.Component {
@@ -191,6 +226,7 @@ class Slideshow extends React.Component {
         <ControlNext onClick={this.handleClick(this.state.activeSlide + 1)}>
           <ArrowRight />
         </ControlNext>
+        <Close />
         <Wrapper
           innerRef={(comp) => {
             this.wrapper = comp;
