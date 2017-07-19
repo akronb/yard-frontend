@@ -29,7 +29,6 @@ const Wrapper = styled.div`
 const Slide = styled.img`
   max-height: 100%;
   max-width: 100%;
-  transform-origin: center bottom;
   @media (max-width: 920px) {
     position: absolute;
     top: 50%;
@@ -121,6 +120,9 @@ const Close = styled.div`
   &:after {
     transform: rotate(-45deg);
   }
+  @media (min-width: 920px) {
+    display: none;
+  }
 `;
 
 class Slideshow extends React.Component {
@@ -154,6 +156,7 @@ class Slideshow extends React.Component {
     const index = this.state.activeSlide;
     const { width: originalWidth, height: originalHeight } = this.props.images[index];
     const actualHeight = this.state.wrapperHeight;
+    console.log(originalWidth, originalHeight, actualHeight);
     // prettier-ignore
     const actualWidth = (actualHeight / originalHeight) * originalWidth;
     // prettier-ignore
@@ -175,34 +178,40 @@ class Slideshow extends React.Component {
     const offset = this.state.activeSlide * -100;
     const scaleRatio = 0.8;
     const scaleDiff = this.calcWidthDiff(0.8);
-    const transitionStyle = {
-      transition: 'transform .2s linear',
-    };
-    let mainStyle;
+    let test;
 
     if (this.state.windowWidth <= 920) {
-      return {
+      test = {
         transform: `translate(calc(${mobileOffset}vw - 50%), -50%)`,
+        transition: '.2s linear',
+        'transform-origin': 'center bottom 0px',
       };
     }
     if (index === this.state.activeSlide) {
-      mainStyle = {
+      test = {
         transform: `translateX(calc(${offset}% + 50vw - 50%))`,
+        transition: '.2s linear',
+        'transform-origin': 'center bottom 0px',
       };
     } else if (index > this.state.activeSlide) {
-      mainStyle = {
+      test = {
         transform: `translateX(calc(${offset}% + 50vw - 50% + 4rem - ${scaleDiff}px)) scale(${scaleRatio})`,
         opacity: '.5',
+        transition: '.2s linear',
+        'transform-origin': 'center bottom 0px',
       };
     } else {
-      mainStyle = {
+      test = {
         transform: `translateX(calc(${offset}% + 50vw - 50% - 4rem + ${scaleDiff}px)) scale(${scaleRatio})`,
         opacity: '.5',
+        transition: '.2s linear',
+        'transform-origin': 'center bottom 0px',
       };
     }
 
-    if (this.state.justOpened) return mainStyle;
-    return { ...mainStyle, ...transitionStyle };
+    if (this.state.wrapperHeight === 0) test = {};
+    console.log(test);
+    return test;
   }
 
   handleClick = index => (event) => {
