@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { getImageUrl } from '../../utils';
+import { media } from '../../style-utils';
 import Image from '../../Components/Image';
 
 const Card = styled(Link)`
@@ -19,6 +20,13 @@ const Card = styled(Link)`
   &:last-child {
     margin-bottom: 6rem;
   }
+  ${media.tablet`
+    flex-direction: column;
+    margin: 2rem 1rem 0px;
+    &:last-child {
+      margin-bottom: 4rem;
+    }
+  `};
 `;
 
 const Preview = styled(Image)`
@@ -26,6 +34,13 @@ const Preview = styled(Image)`
   height: 350px;
   flex-shrink: 0;
   object-fit: cover;
+  ${media.giant`
+    width: 45%;
+  `};
+  ${media.tablet`
+    width: 100%;
+    height: auto;
+  `};
 `;
 
 const Info = styled.div`
@@ -34,6 +49,12 @@ const Info = styled.div`
   padding-right: 6.25rem;
   border-bottom: solid 2px #646971;
   flex-grow: 1;
+  ${media.giant`
+    padding-right: 3rem;
+  `};
+  ${media.tablet`
+    padding: 0px 1rem 1.5rem;
+  `};
 `;
 
 const Location = styled.p`
@@ -41,7 +62,10 @@ const Location = styled.p`
   font-family: monaco, Consolas, 'Lucida Console', monospace;
   text-transform: uppercase;
   color: #646971;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0px 0px;
+  ${media.tablet`
+    margin-top: 1rem;
+  `};
 `;
 
 const Name = styled.h3`
@@ -51,13 +75,20 @@ const Name = styled.h3`
   font-size: 2.5rem;
   line-height: 3.5rem;
   color: #000;
+  ${media.tablet`
+    font-size: 2rem;
+    line-height: 1.25;
+  `};
 `;
 
 const Description = styled.p`
   display: block;
-  margin-top: .5rem;
+  margin: .5rem 0px 0px;
   line-height: 1.5rem;
   color: #3e4247;
+  ${media.tablet`
+    margin: 1rem 0px 0px;
+  `};
 `;
 
 type Props = {
@@ -76,8 +107,14 @@ export default (props: Props) =>
       title={props.name}
     />
     <Info>
-      <Location>{props.location}</Location>
-      <Name>{props.name}</Name>
-      <Description>{props.children}</Description>
+      <Location>
+        {props.location}
+      </Location>
+      <Name>
+        {props.name}
+      </Name>
+      <Description>
+        {props.children}
+      </Description>
     </Info>
   </Card>);
