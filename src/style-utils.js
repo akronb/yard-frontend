@@ -1,4 +1,5 @@
 /* eslint import/prefer-default-export: 0 */
+/* eslint no-param-reassign: 0*/
 // @flow
 import { css } from 'styled-components';
 
