@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { getImageUrl } from '../../utils';
-import { media } from '../../style-utils';
+import { getImageUrl } from '../../utils/images';
+import { media } from '../../utils/styles';
 import Image from '../../Components/Image';
 
 const Card = styled(Link)`

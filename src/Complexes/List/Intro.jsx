@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-import { media } from '../../style-utils';
+import { media } from '../../utils/styles';
 
 const Intro = styled.div`
   margin-top: 4rem;

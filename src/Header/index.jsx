@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Grid } from 'react-flexbox-grid';
 
-import { media } from '../style-utils';
+import { media } from '../utils/styles';
 import logo from '../img/compass-logo.svg';
 
 const Header = styled.header`

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Grid } from 'react-flexbox-grid';
 
-import { media } from '../../style-utils';
+import { media } from '../../utils/styles';
 import developLogoImg from '../../img/compass-development-logo.svg';
 
 const Wrapper = styled.div`

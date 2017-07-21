@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-import { media } from '../style-utils';
+import { media } from '../utils/styles';
 import arrowImg from '../img/arrow.svg';
 
 const Footer = styled.footer`
