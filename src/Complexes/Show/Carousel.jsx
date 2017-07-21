@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Portal from 'react-portal';
 
 import type { ImagesType } from '../types';
-import { getImageUrl } from '../../utils';
+import { getImageUrl } from '../../utils/images';
 import Slideshow from './Slideshow';
 import Pluralizer from '../../Components/Pluralizer';
 

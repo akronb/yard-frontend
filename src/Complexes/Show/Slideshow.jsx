@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { getImageUrl } from '../../utils';
+import { getImageUrl } from '../../utils/images';
 
 const Gallery = styled.div`
   position: fixed;
