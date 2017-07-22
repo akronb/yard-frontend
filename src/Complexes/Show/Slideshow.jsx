@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { getImageUrl } from '../../utils/images';
-import { sizes, media } from '../../utils/styles';
+import { media } from '../../utils/styles';
 
 const Gallery = styled.div`
   position: fixed;
@@ -29,7 +29,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  max-width: 100vw;
   height: 100%;
+  ${media.desktop`
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: auto;
+  `};
 `;
 
 const Slide = styled.img`
@@ -40,10 +47,10 @@ const Slide = styled.img`
   transition: .2s linear;
   transform-origin: center bottom 0px;
   ${media.desktop`
-    position: absolute;
-    top: 50%;
-    left: 50%;
     height: auto;
+    max-height: 100vh;
+    max-width: 100vw;
+    visibility: hidden;
   `};
 `;
 
@@ -140,47 +147,20 @@ class Slideshow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: this.props.active || 0,
-      windowWidth: 0,
-      wrapperHeight: 0,
-      justOpened: true,
+      active: this.props.active,
     };
   }
 
   componentDidMount() {
-    this.getWrapperHeight();
     window.addEventListener('keydown', this.handleKeyDown);
-    window.addEventListener('resize', this.getWrapperHeight);
-  }
-
-  shouldComponentUpdate() {
-    return true;
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
-    window.removeEventListener('resize', this.getWrapperHeight);
-  }
-
-  getWrapperHeight = () => {
-    this.setState({ wrapperHeight: this.wrapper.clientHeight });
-    this.setState({ windowWidth: window.innerWidth });
-  };
-
-  calcWidthDiff(scaleRatio) {
-    const index = this.state.active;
-    const { width: originalWidth, height: originalHeight } = this.props.images[index];
-    const actualHeight = this.state.wrapperHeight;
-    // prettier-ignore
-    const actualWidth = (actualHeight / originalHeight) * originalWidth;
-    // prettier-ignore
-    return (actualWidth * (1 - scaleRatio)) / 2;
   }
 
   slide = (index) => {
     const imagesNum = this.props.images.length;
-
-    if (this.state.justOpened) this.setState({ justOpened: false });
 
     if (index < 0) this.setState({ active: imagesNum - 1 });
     else if (index >= imagesNum) this.setState({ active: 0 });
@@ -188,33 +168,17 @@ class Slideshow extends React.Component {
   };
 
   changeSlide(index) {
-    const mobileOffset = (index - this.state.active) * 100;
     const offset = this.state.active * -100;
     const scaleRatio = 0.8;
-    const scaleDiff = this.calcWidthDiff(scaleRatio);
-
-    if (this.state.wrapperHeight === 0) {
-      return { display: 'none' };
-    }
-
-    if (this.state.windowWidth <= sizes.desktop) {
-      return {
-        transform: `translate(calc(${mobileOffset}vw - 50%), -50%)`,
-      };
-    }
 
     if (index === this.state.active) {
       return {
         transform: `translateX(calc(${offset}% + 50vw - 50%))`,
-      };
-    } else if (index > this.state.active) {
-      return {
-        transform: `translateX(calc(${offset}% + 50vw - 50% + 4rem - ${scaleDiff}px)) scale(${scaleRatio})`,
-        opacity: '.5',
+        visibility: 'visible',
       };
     }
     return {
-      transform: `translateX(calc(${offset}% + 50vw - 50% - 4rem + ${scaleDiff}px)) scale(${scaleRatio})`,
+      transform: `translateX(calc(${offset}% + 50vw - 50%)) scale(${scaleRatio})`,
       opacity: '.5',
     };
   }
