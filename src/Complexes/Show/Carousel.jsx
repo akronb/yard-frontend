@@ -43,18 +43,16 @@ const Button = styled.button`
   color: #fff;
 `;
 
-// TODO: better flow cover
-
 class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: 0,
-      isOpened: false,
-    };
-  }
+  state: {
+    active: number,
+    isOpened: boolean,
+  } = {
+    active: 0,
+    isOpened: false,
+  };
 
-  openPortal = (index = 0) => (event) => {
+  openPortal = (index: number = 0) => (event: Event) => {
     event.stopPropagation();
     this.setState({ active: index, isOpened: true });
   };

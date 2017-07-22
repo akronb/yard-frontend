@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
@@ -145,12 +146,7 @@ const Close = styled.div`
 `;
 
 class Slideshow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: this.props.active,
-    };
-  }
+  state: { active: number } = { active: this.props.active };
 
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
@@ -160,7 +156,7 @@ class Slideshow extends React.Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  slide = (index) => {
+  slide = (index: number) => {
     const imagesNum = this.props.images.length;
 
     if (index < 0) this.setState({ active: imagesNum - 1 });
@@ -168,7 +164,7 @@ class Slideshow extends React.Component {
     else this.setState({ active: index });
   };
 
-  changeSlide(index) {
+  changeSlide(index: number) {
     const offset = this.state.active * -100;
     const scaleRatio = 0.8;
 
@@ -184,12 +180,12 @@ class Slideshow extends React.Component {
     };
   }
 
-  handleClick = index => (event) => {
+  handleClick = (index: number) => (event: Event) => {
     event.stopPropagation();
     this.slide(index);
   };
 
-  handleKeyDown = (event) => {
+  handleKeyDown = (event: Event) => {
     event.stopPropagation();
 
     if (event.keyCode === 39) this.slide(this.state.active + 1);
@@ -200,9 +196,7 @@ class Slideshow extends React.Component {
     return (
       <Gallery onClick={this.props.closePortal}>
         <Helmet>
-          <body // eslint-disable-next-line react/style-prop-object
-            style="overflow: hidden;"
-          />
+          <body style="overflow: hidden;" /> // eslint-disable-next-line react/style-prop-object
         </Helmet>
         <ControlPrev onClick={this.handleClick(this.state.active - 1)}>
           <ArrowLeft />
