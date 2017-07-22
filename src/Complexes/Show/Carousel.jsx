@@ -9,7 +9,7 @@ import { getImageUrl } from '../../utils/images';
 import Slideshow from './Slideshow';
 import Pluralizer from '../../Components/Pluralizer';
 
-const Carousel = styled.div`height: 400px;`;
+const CarouselWrapper = styled.div`height: 400px;`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,44 +44,52 @@ const Button = styled.button`
   color: #fff;
 `;
 
-type Props = {
-  name: string,
-  images: Array<ImagesType>,
-};
+// TODO: better flow cover
 
-export default (props: Props) => {
-  const ModalButton = (
-    <Button>
-      <Pluralizer
-        number={props.images.length}
-        one="фотография"
-        few="фотографии"
-        other="фотографий"
-        combine
-      />
-    </Button>
-  );
+class Carousel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: 0,
+      isOpened: false,
+    };
+  }
 
-  return (
-    <Carousel>
-      <Wrapper>
-        {props.images.map((image, index) =>
-          (<Portal
-            closeOnEsc
-            openByClickOn={
-              <Photo src={getImageUrl(image.id, 512)} key={image.id} alt={props.name} />
-            }
-            key={image.id}
-          >
-            <Slideshow images={props.images} name={props.name} activeSlide={index} />
-          </Portal>),
-        )}
-      </Wrapper>
-      <Grid>
-        <Portal closeOnEsc openByClickOn={ModalButton}>
-          <Slideshow images={props.images} name={props.name} />
+  openPortal = (index = 0) => (event) => {
+    event.stopPropagation();
+    this.setState({ active: index, isOpened: true });
+  };
+
+  render() {
+    return (
+      <CarouselWrapper>
+        <Wrapper>
+          {this.props.images.map((image, index) =>
+            (<Photo
+              onClick={this.openPortal(index)}
+              src={getImageUrl(image.id, 512)}
+              key={image.id}
+              alt={this.props.name}
+            />),
+          )}
+        </Wrapper>
+        <Grid>
+          <Button onClick={this.openPortal()}>
+            <Pluralizer
+              number={this.props.images.length}
+              one="фотография"
+              few="фотографии"
+              other="фотографий"
+              combine
+            />
+          </Button>
+        </Grid>
+        <Portal closeOnEsc isOpened={this.state.isOpened}>
+          <Slideshow images={this.props.images} name={this.props.name} active={this.state.active} />
         </Portal>
-      </Grid>
-    </Carousel>
-  );
-};
+      </CarouselWrapper>
+    );
+  }
+}
+
+export default Carousel;

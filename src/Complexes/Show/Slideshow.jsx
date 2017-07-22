@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { getImageUrl } from '../../utils/images';
+import { sizes, media } from '../../utils/styles';
 
 const Gallery = styled.div`
   position: fixed;
@@ -15,13 +16,18 @@ const Gallery = styled.div`
   justify-content: flex-end;
   text-align: center;
   background-color: rgba(17, 17, 17, 0.95);
-  @media (max-width: 920px) {
+  ${media.giant`
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+  `};
+  ${media.desktop`
     padding: 0;
-  }
+  `};
 `;
 
 const Wrapper = styled.div`
   display: flex;
+  justify-content: flex-start;
   align-items: flex-end;
   height: 100%;
 `;
@@ -29,11 +35,16 @@ const Wrapper = styled.div`
 const Slide = styled.img`
   max-height: 100%;
   max-width: 100%;
-  @media (max-width: 920px) {
+  height: 100%;
+  will-change: transform, opacity;
+  transition: .2s linear;
+  transform-origin: center bottom 0px;
+  ${media.desktop`
     position: absolute;
     top: 50%;
     left: 50%;
-  }
+    height: auto;
+  `};
 `;
 
 const Description = styled.div`
@@ -41,7 +52,7 @@ const Description = styled.div`
   margin-top: 1.5rem;
   font-size: 1rem;
   color: #a9afb6;
-  @media (max-width: 920px) {
+  ${media.desktop`
     position: absolute;
     bottom: 1.5rem;
     left: 50%;
@@ -49,7 +60,7 @@ const Description = styled.div`
     padding: .125rem .25rem;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, .9);
     background-color: rgba(0, 0, 0, .5);
-  }
+  `};
 `;
 
 const Control = styled.div`
@@ -62,7 +73,7 @@ const Control = styled.div`
   &:hover {
     background: rgba(0, 0, 0, .15);
   }
-  @media (min-width: 920px) {
+  @media (min-width: 992px) {
     display: none;
   }
 `;
@@ -120,7 +131,7 @@ const Close = styled.div`
   &:after {
     transform: rotate(-45deg);
   }
-  @media (min-width: 920px) {
+  @media (min-width: 992px) {
     display: none;
   }
 `;
@@ -129,7 +140,7 @@ class Slideshow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeSlide: this.props.activeSlide || 0,
+      active: this.props.active || 0,
       windowWidth: 0,
       wrapperHeight: 0,
       justOpened: true,
@@ -140,6 +151,10 @@ class Slideshow extends React.Component {
     this.getWrapperHeight();
     window.addEventListener('keydown', this.handleKeyDown);
     window.addEventListener('resize', this.getWrapperHeight);
+  }
+
+  shouldComponentUpdate() {
+    return true;
   }
 
   componentWillUnmount() {
@@ -153,10 +168,9 @@ class Slideshow extends React.Component {
   };
 
   calcWidthDiff(scaleRatio) {
-    const index = this.state.activeSlide;
+    const index = this.state.active;
     const { width: originalWidth, height: originalHeight } = this.props.images[index];
     const actualHeight = this.state.wrapperHeight;
-    console.log(originalWidth, originalHeight, actualHeight);
     // prettier-ignore
     const actualWidth = (actualHeight / originalHeight) * originalWidth;
     // prettier-ignore
@@ -168,50 +182,41 @@ class Slideshow extends React.Component {
 
     if (this.state.justOpened) this.setState({ justOpened: false });
 
-    if (index < 0) this.setState({ activeSlide: imagesNum - 1 });
-    else if (index >= imagesNum) this.setState({ activeSlide: 0 });
-    else this.setState({ activeSlide: index });
+    if (index < 0) this.setState({ active: imagesNum - 1 });
+    else if (index >= imagesNum) this.setState({ active: 0 });
+    else this.setState({ active: index });
   };
 
   changeSlide(index) {
-    const mobileOffset = (index - this.state.activeSlide) * 100;
-    const offset = this.state.activeSlide * -100;
+    const mobileOffset = (index - this.state.active) * 100;
+    const offset = this.state.active * -100;
     const scaleRatio = 0.8;
-    const scaleDiff = this.calcWidthDiff(0.8);
-    let test;
+    const scaleDiff = this.calcWidthDiff(scaleRatio);
 
-    if (this.state.windowWidth <= 920) {
-      test = {
+    if (this.state.wrapperHeight === 0) {
+      return { display: 'none' };
+    }
+
+    if (this.state.windowWidth <= sizes.desktop) {
+      return {
         transform: `translate(calc(${mobileOffset}vw - 50%), -50%)`,
-        transition: '.2s linear',
-        'transform-origin': 'center bottom 0px',
       };
     }
-    if (index === this.state.activeSlide) {
-      test = {
+
+    if (index === this.state.active) {
+      return {
         transform: `translateX(calc(${offset}% + 50vw - 50%))`,
-        transition: '.2s linear',
-        'transform-origin': 'center bottom 0px',
       };
-    } else if (index > this.state.activeSlide) {
-      test = {
+    } else if (index > this.state.active) {
+      return {
         transform: `translateX(calc(${offset}% + 50vw - 50% + 4rem - ${scaleDiff}px)) scale(${scaleRatio})`,
         opacity: '.5',
-        transition: '.2s linear',
-        'transform-origin': 'center bottom 0px',
-      };
-    } else {
-      test = {
-        transform: `translateX(calc(${offset}% + 50vw - 50% - 4rem + ${scaleDiff}px)) scale(${scaleRatio})`,
-        opacity: '.5',
-        transition: '.2s linear',
-        'transform-origin': 'center bottom 0px',
       };
     }
-
-    if (this.state.wrapperHeight === 0) test = {};
-    console.log(test);
-    return test;
+    return {
+      transform: `translateX(calc(${offset}% + 50vw - 50% - 4rem + ${scaleDiff}px)) scale(${scaleRatio})`,
+      opacity: '.5',
+    };
   }
 
   handleClick = index => (event) => {
@@ -222,17 +227,17 @@ class Slideshow extends React.Component {
   handleKeyDown = (event) => {
     event.stopPropagation();
 
-    if (event.keyCode === 39) this.slide(this.state.activeSlide + 1);
-    if (event.keyCode === 37) this.slide(this.state.activeSlide - 1);
+    if (event.keyCode === 39) this.slide(this.state.active + 1);
+    if (event.keyCode === 37) this.slide(this.state.active - 1);
   };
 
   render() {
     return (
       <Gallery onClick={this.props.closePortal}>
-        <ControlPrev onClick={this.handleClick(this.state.activeSlide - 1)}>
+        <ControlPrev onClick={this.handleClick(this.state.active - 1)}>
           <ArrowLeft />
         </ControlPrev>
-        <ControlNext onClick={this.handleClick(this.state.activeSlide + 1)}>
+        <ControlNext onClick={this.handleClick(this.state.active + 1)}>
           <ArrowRight />
         </ControlNext>
         <Close />
@@ -252,7 +257,7 @@ class Slideshow extends React.Component {
           )}
         </Wrapper>
         <Description>
-          {this.state.activeSlide + 1}/{this.props.images.length} {this.props.name}
+          {this.state.active + 1}/{this.props.images.length} {this.props.name}
         </Description>
       </Gallery>
     );
