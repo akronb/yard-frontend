@@ -196,7 +196,7 @@ class Slideshow extends React.Component {
     return (
       <Gallery onClick={this.props.closePortal}>
         <Helmet>
-          <body style="overflow: hidden;" /> // eslint-disable-next-line react/style-prop-object
+          <body className="is-slideshow" />
         </Helmet>
         <ControlPrev onClick={this.handleClick(this.state.active - 1)}>
           <ArrowLeft />

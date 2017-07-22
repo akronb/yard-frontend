@@ -12,3 +12,7 @@ body {
   background-size: 20px 10px;
   line-height: 1.4rem;
 }
+
+is-slideshow {
+  overflow: hidden;
+}
