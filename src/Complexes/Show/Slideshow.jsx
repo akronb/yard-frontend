@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import { getImageUrl } from '../../utils/images';
 import { media } from '../../utils/styles';
@@ -198,6 +199,11 @@ class Slideshow extends React.Component {
   render() {
     return (
       <Gallery onClick={this.props.closePortal}>
+        <Helmet>
+          <body // eslint-disable-next-line react/style-prop-object
+            style="overflow: hidden;"
+          />
+        </Helmet>
         <ControlPrev onClick={this.handleClick(this.state.active - 1)}>
           <ArrowLeft />
         </ControlPrev>
@@ -205,11 +211,7 @@ class Slideshow extends React.Component {
           <ArrowRight />
         </ControlNext>
         <Close />
-        <Wrapper
-          innerRef={(comp) => {
-            this.wrapper = comp;
-          }}
-        >
+        <Wrapper>
           {this.props.images.map((image, i) =>
             (<Slide
               src={getImageUrl(image.id, 1024)}
