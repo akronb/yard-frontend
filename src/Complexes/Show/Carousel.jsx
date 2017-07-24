@@ -4,6 +4,7 @@ import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 import Portal from 'react-portal';
 
+import { media } from '../../utils/styles';
 import { getImageUrl } from '../../utils/images';
 import Slideshow from './Slideshow';
 import Pluralizer from '../../Components/Pluralizer';
@@ -30,6 +31,7 @@ const Button = styled.button`
   position: relative;
   display: block;
   margin-top: -2.625rem;
+  margin-left: 1rem;
   cursor: pointer;
   background-color: #00779a;
   border: none;
@@ -41,6 +43,10 @@ const Button = styled.button`
   font-size: .625rem;
   line-height: .625rem;
   color: #fff;
+
+  ${media.tablet`
+    margin-left: 0px;
+  `};
 `;
 
 class Carousel extends React.Component {
