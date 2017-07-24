@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +16,27 @@ const Wrapper = styled.div`
   ${media.tablet`
     padding-top: 2rem;
     padding-bottom: 13.625rem;
+  `};
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${media.tablet`
+    flex-direction: row-reverse;
+    align-items: center;
+  `};
+`;
+
+const Col = styled.div`
+  flex-basis: 100%;
+
+  ${media.tablet`
+    flex: 1 1 calc(50% - .5rem);
+    &:last-child {
+      margin-right: 1rem;
+    }
   `};
 `;
 
@@ -86,18 +107,18 @@ const Photo = styled(Image)`
 export default () =>
   (<Wrapper>
     <Grid>
-      <Row middle="sm">
-        <Col sm={6} xs={12} last="xs" first="sm">
-          <District>Якиманка</District>
-          <Title>Исторический центр Москвы в двух километрах&nbsp;от Кремля</Title>
-          <GuideLink to="#">Гид по Якиманке</GuideLink>
-        </Col>
-        <Col sm={6} xs={12}>
+      <Row>
+        <Col>
           <Photo
             x1={`${PUBLIC_URL}/img/polyanka-photo.jpg`}
             x2={`${PUBLIC_URL}/img/polyanka-photo@2x.jpg`}
             title="Якиманка"
           />
+        </Col>
+        <Col>
+          <District>Якиманка</District>
+          <Title>Исторический центр Москвы в двух километрах&nbsp;от Кремля</Title>
+          <GuideLink to="#">Гид по Якиманке</GuideLink>
         </Col>
       </Row>
     </Grid>

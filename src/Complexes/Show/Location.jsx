@@ -25,12 +25,12 @@ const Row = styled.div`
 `;
 
 const Location = styled(MapBox)`
-  flex-basis: 100%;
+  flex: 1 1 100%;
   height: 52vw;
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.5);
 
   ${media.tablet`
-    flex: 1 1 0;
+    flex: 1 1 calc(50% - .5rem);
     height: 302px;
     margin-top: -9.75rem;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
@@ -43,7 +43,7 @@ const Places = styled.div`
   z-index: 10;
 
   ${media.tablet`
-    flex: 1 1 0;
+    flex: 1 1 calc(50% - .5rem);
     margin-top: -9.75rem;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
   `};
