@@ -11,64 +11,75 @@ const Gallery = styled.div`
   top: 0px;
   bottom: 0px;
   width: 100%;
-  padding-top: 4rem;
-  padding-bottom: 3.5rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   text-align: center;
   background-color: rgba(17, 17, 17, 0.95);
-  ${media.giant`
+
+  ${media.desktop`
     padding-top: 2rem;
     padding-bottom: 1.5rem;
   `};
-  ${media.desktop`
-    padding: 0;
+
+  ${media.giant`
+    padding-top: 4rem;
+    padding-bottom: 3.5rem;
   `};
 `;
 
 const Wrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   max-width: 100vw;
-  height: 100%;
+  height: auto;
+
   ${media.desktop`
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    height: auto;
+    height: 100%;
+    position: static;
+    max-width: 100%;
+    transform: none;
   `};
 `;
 
 const Slide = styled.img`
-  max-height: 100%;
-  max-width: 100%;
-  height: 100%;
+  max-height: 100vh;
+  max-width: 100vw;
   will-change: transform, opacity;
   transition: .2s linear;
   transform-origin: center bottom 0px;
+  visibility: hidden;
+
   ${media.desktop`
-    height: auto;
-    max-height: 100vh;
-    max-width: 100vw;
-    visibility: hidden;
+    max-height: 100%;
+    max-width: 80%;
+    visibility: visible;
   `};
 `;
 
 const Description = styled.div`
   display: inline-block;
-  margin-top: 1.5rem;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: .125rem .25rem;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, .9);
+  background-color: rgba(0, 0, 0, .5);
   font-size: 1rem;
   color: #a9afb6;
+
   ${media.desktop`
-    position: absolute;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translate(-50%, 0);
-    padding: .125rem .25rem;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .9);
-    background-color: rgba(0, 0, 0, .5);
+    position: static;
+    transform: none;
+    margin-top: 1.5rem;
+    text-shadow: none;
+    background-color: transparent;
   `};
 `;
 
@@ -167,6 +178,7 @@ class Slideshow extends React.Component {
   changeSlide(index: number) {
     const offset = this.state.active * -100;
     const scaleRatio = 0.8;
+    const margin = index > this.state.active ? '5vh' : '-5vh';
 
     if (index === this.state.active) {
       return {
@@ -175,7 +187,7 @@ class Slideshow extends React.Component {
       };
     }
     return {
-      transform: `translateX(calc(${offset}% + 50vw - 50%)) scale(${scaleRatio})`,
+      transform: `translateX(calc(${offset}% + 50vw - 50% - ${margin})) scale(${scaleRatio})`,
       opacity: '.5',
     };
   }
