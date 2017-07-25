@@ -5,7 +5,7 @@ import { css } from 'styled-components';
 
 export const sizes = {
   giant: 1200,
-  desktop: 992,
+  desktop: 1024,
   tablet: 768,
   phone: 496,
 };
