@@ -1,21 +1,38 @@
 // @flow
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import { media } from '../../utils/styles';
 import type { DetailsType, StatisticsType } from '../types';
 import { kinds, securityKinds, constructionKinds, quarters } from '../dictionaries';
 import Heading from './Heading';
+
+const Row = styled.div`
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+
+  ${media.tablet`
+    margin-bottom: 3rem;
+  `};
+`;
+
+const Col = styled.div`
+  flex: 1 0 389px;
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+`;
 
 const Feature = styled.dl`
   display: flex;
   margin-top: 0px;
   margin-bottom: .5rem;
+
   &:first-child {
     margin-top: 1rem;
-  }
-  &:last-child {
-    margin-bottom: 2.5rem;
   }
 `;
 
@@ -61,7 +78,7 @@ export default (props: Props) => {
     <Grid>
       <Heading>Характеристики</Heading>
       <Row>
-        <Col lg={4}>
+        <Col>
           {!!propertiesCount &&
             <Feature>
               <Label>Количество квартир</Label>
@@ -93,7 +110,7 @@ export default (props: Props) => {
               </Value>
             </Feature>}
         </Col>
-        <Col lg={4}>
+        <Col>
           {!!constructionKind &&
             <Feature>
               <Label>Конструкция корпусов</Label>
@@ -126,7 +143,7 @@ export default (props: Props) => {
               </Value>
             </Feature>}
         </Col>
-        <Col lg={4}>
+        <Col>
           {!!startQuarter &&
             !!startYear &&
             <Feature>
