@@ -11,19 +11,29 @@ import Heading from './Heading';
 const Row = styled.div`
   display: flex;
   overflow-x: auto;
-  margin-bottom: 2rem;
+  margin: 0px -1rem 2rem;
 
   ${media.tablet`
-    margin-bottom: 3rem;
+    margin: 0px 0px 3rem;
   `};
 `;
 
 const Col = styled.div`
   flex: 1 0 389px;
 
+  &:first-child {
+    margin-left: 1rem;
+  }
+
   &:not(:last-child) {
     margin-right: 1rem;
   }
+
+  ${media.tablet`
+    &:first-child {
+      margin-left: 0rem;
+    }
+  `};
 `;
 
 const Feature = styled.dl`
