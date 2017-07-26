@@ -8,7 +8,11 @@ import Heading from './Heading';
 
 const Wrapper = styled.div`
   margin-top: .5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+
+  ${media.tablet`
+    margin-bottom: 2.5rem;
+  `};
 `;
 
 const Row = styled.div`
@@ -24,7 +28,8 @@ const Text = styled.p`
   padding-right: 1.5rem;
 
   ${media.tablet`
-    flex: 0 0 25%;`};
+    flex: 0 0 25%;
+  `};
 
   ${media.desktop`
     padding-left: .5rem;
@@ -35,7 +40,8 @@ const Text = styled.p`
     }
     &:nth-child(6n) {
       padding-right: 0px;
-    }`};
+    }
+  `};
 `;
 
 type Props = {
@@ -50,15 +56,6 @@ export default (props: Props) => {
       <Heading>Инфраструктура</Heading>
       <Wrapper>
         <Row>
-          <Text>Бассейн</Text>
-          <Text>Детский сад</Text>
-          <Text>Детский сад</Text>
-          <Text>Частная школа</Text>
-          <Text>Бассейн</Text>
-          <Text>Частная школа</Text>
-          <Text>Бассейн</Text>
-          <Text>Детский сад</Text>
-          <Text>Частная школа</Text>
           {amenities.map(amenity =>
             (<Text>
               {amenity}
