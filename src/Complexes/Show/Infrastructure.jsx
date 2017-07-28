@@ -18,6 +18,11 @@ const Wrapper = styled.div`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  ${media.desktop`
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+  `};
 `;
 
 const Text = styled.p`
@@ -35,12 +40,6 @@ const Text = styled.p`
     padding-left: .5rem;
     padding-right: .5rem;
     flex: 0 0 16.66666667%;
-    &:nth-child(6n + 1) {
-      padding-left: 0px;
-    }
-    &:nth-child(6n) {
-      padding-right: 0px;
-    }
   `};
 `;
 
