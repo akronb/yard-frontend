@@ -65,11 +65,7 @@ const MenuLink = styled(Link)`
   margin-top: .5rem;
 `;
 
-const MenuLinkArrow = styled(Link)`
-  display: inline-block;
-  font-weight: 300;
-  color: #fff;
-  text-decoration: none;
+const MenuLinkArrow = MenuLink.extend`
   margin-top: 1rem;
 
   &:after {
