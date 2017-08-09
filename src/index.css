@@ -16,3 +16,7 @@ body {
 is-slideshow {
   overflow: hidden;
 }
+
+.container {
+  box-sizing: border-box;
+}
