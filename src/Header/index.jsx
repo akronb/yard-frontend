@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 1rem;
+  padding: 0px .5rem;
 
   ${media.tablet`
     padding: 0px;

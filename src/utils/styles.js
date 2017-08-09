@@ -1,13 +1,13 @@
 /* eslint import/prefer-default-export: 0 */
-/* eslint no-param-reassign: 0*/
+/* eslint no-param-reassign: 0 */
 // @flow
 import { css } from 'styled-components';
 
 export const sizes = {
   giant: 1200,
-  desktop: 1024,
+  desktop: 992,
   tablet: 768,
-  phone: 496,
+  phone: 576,
 };
 
 export const media = Object.keys(sizes).reduce((accumulator, label) => {

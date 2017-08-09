@@ -18,16 +18,22 @@ const Wrapper = styled.div`
 const Row = styled.div`
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.5);
+  margin: 0px -.5rem;
+
+  ${media.phone`
+    margin: 0px;
+  `};
 
   ${media.tablet`
     flex-direction: row;
+    box-shadow: none;
   `};
 `;
 
 const Location = styled(MapBox)`
   flex: 1 1 100%;
   height: 52vw;
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.5);
 
   ${media.tablet`
     flex: 1 1 calc(50% - .5rem);
@@ -40,7 +46,6 @@ const Location = styled(MapBox)`
 
 const Places = styled.div`
   background-color: #fff;
-  z-index: 10;
 
   ${media.tablet`
     flex: 1 1 calc(50% - .5rem);

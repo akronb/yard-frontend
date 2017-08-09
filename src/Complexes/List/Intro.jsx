@@ -6,7 +6,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import { media } from '../../utils/styles';
 
 const Intro = styled.div`
-  padding: 0px 1rem;
+  padding: 0px .5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   text-align: center;

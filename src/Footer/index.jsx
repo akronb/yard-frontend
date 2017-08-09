@@ -10,7 +10,7 @@ import arrowImg from '../img/arrow.svg';
 const Footer = styled.footer`
   background-color: #111;
   color: #a9afb6;
-  padding: 2rem 1rem 3rem;
+  padding: 2rem .5rem 3rem;
   font-size: .875rem;
   font-weight: 300;
 
@@ -90,13 +90,13 @@ export default () =>
   (<Footer>
     <Grid>
       <Row>
-        <Col md={2} sm={3} xs={12}>
+        <Col lg={2} md={3} xs={12}>
           <Title>ООО «Ярд»</Title>
           <Info>ОГРН 1175074002531</Info>
           <Info>ИНН 5036165365</Info>
           <Info>+7 (999) 821-14-88</Info>
         </Col>
-        <Col mdOffset={2} md={2} smOffset={3} sm={3} xs={12}>
+        <Col lgOffset={2} lg={2} mdOffset={3} md={3} xs={12}>
           <Line />
           <Title>Жилые комплексы</Title>
           <Menu>
@@ -106,7 +106,7 @@ export default () =>
             <MenuLinkArrow to="#">Все ЖК Москвы</MenuLinkArrow>
           </Menu>
         </Col>
-        <Col md={2} sm={3} xs={12}>
+        <Col lg={2} md={3} xs={12}>
           <Line />
           <Title>Компания</Title>
           <Menu>
@@ -116,7 +116,7 @@ export default () =>
         </Col>
       </Row>
       <Row>
-        <Col mdOffset={4} md={8} smOffset={6} sm={6} xs={12}>
+        <Col lgOffset={4} lg={8} mdOffset={6} md={6} xs={12}>
           <Legal>
             Любая информация, представленная на данном сайте, носит исключительно информационный
             характер и ни при каких условиях не является публичной офертой, определяемой положениями

@@ -17,7 +17,7 @@ import Guide from './Guide';
 import Location from './Location';
 
 const Wrapper = styled.div`
-  padding: 1rem;
+  padding: .5rem;
   background: #fff;
 
   ${media.tablet`

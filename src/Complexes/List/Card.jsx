@@ -14,7 +14,7 @@ const Card = styled(Link)`
   background: #fff;
   text-decoration: none;
   transition: .2s ease-in-out;
-  margin: 2rem 1rem 0px;
+  margin: 2rem .5rem 0px;
 
   &:hover {
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);

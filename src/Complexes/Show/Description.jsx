@@ -71,10 +71,10 @@ class Description extends React.Component {
       <Wrapper>
         <Grid>
           <Row>
-            <Col sm={2} xs={12}>
+            <Col md={2} xs={12}>
               <Heading>Описание</Heading>
             </Col>
-            <Col sm={10} xs={12}>
+            <Col md={10} xs={12}>
               <Text style={this.state.isOpened ? { maxHeight: 'none' } : {}}>
                 {this.props.fullDescription}
               </Text>

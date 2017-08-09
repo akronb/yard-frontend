@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${media.tablet`
+  ${media.phone`
     flex-direction: row;
   `};
 `;
@@ -35,7 +35,7 @@ const Fact = styled(Heading)`
     margin-bottom: 1rem;
   }
 
-  ${media.tablet`
+  ${media.phone`
     margin-bottom: 0px;
     &:not(:last-child) {
       margin-right: 3rem;

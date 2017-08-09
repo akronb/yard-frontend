@@ -17,25 +17,31 @@ const Wrapper = styled.div`
 
 const Title = styled(Heading)`
   text-align: left;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
   margin-bottom: 1.5rem;
+
+  ${media.phone`
+    margin-left: 0px;
+    margin-right: 0px;
+  `};
 
   ${media.tablet`
     text-align: center;
-    margin-left: 0px;
-    margin-right: 0px;
   `};
 `;
 
 const Row = styled.div`
   display: flex;
   overflow-x: auto;
-  padding: 0px 1rem;
+  margin: 0px -.5rem;
+
+  ${media.phone`
+    margin: 0px;
+  `};
 
   ${media.desktop`
     overflow-x: hidden;
-    padding: 0px;
   `};
 `;
 
@@ -43,10 +49,13 @@ const Card = styled.div`
   flex: 1 0 320px;
   padding: 1.5rem 1.625rem;
   background-color: #fff;
+  margin-left: 1rem;
 
-  &:not(:last-child) {
-    margin-right: 1rem;
-  }
+  ${media.phone`
+    &:first-child {
+      margin-left: 0px;
+    }
+  `};
 
   ${media.desktop`
     flex: 1 0 0;

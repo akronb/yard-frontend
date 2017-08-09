@@ -22,10 +22,12 @@ const Wrapper = styled.div`
 const Row = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0px .5rem;
 
   ${media.tablet`
     flex-direction: row-reverse;
     align-items: center;
+    padding: 0px;
   `};
 `;
 
@@ -46,7 +48,7 @@ const District = styled.div`
   font-weight: 700;
   line-height: 22px;
   color: #a9afb6;
-  margin: 3rem 1rem 2rem;
+  margin: 3rem 0px 2rem;
 
   ${media.tablet`
     margin: 0px 0px 2rem;
@@ -65,11 +67,6 @@ const Title = styled.div`
   font-weight: bold;
   line-height: 44px;
   color: #ffffff;
-  margin: 0px 1rem;
-
-  ${media.tablet`
-    margin: 0px;
-  `};
 
   ${media.desktop`
     font-size: 3rem;
@@ -84,7 +81,7 @@ const GuideLink = styled(Link)`
   text-align: left;
   line-height: 24px;
   color: #00779a;
-  margin: 2rem 1rem 3rem;
+  margin: 2rem 0px 3rem;
 
   &:after {
     content: url(${arrowImg});
@@ -101,7 +98,13 @@ const GuideLink = styled(Link)`
 `;
 
 const Photo = styled(Image)`
-  width: 100%;
+  width: calc(100% + 2rem);
+  margin: 0px -1rem;
+
+  ${media.tablet`
+    width: 100%;
+    margin: 0px;
+  `};
 `;
 
 export default () =>
