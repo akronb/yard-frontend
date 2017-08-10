@@ -19,7 +19,7 @@ const Row = styled.div`
 `;
 
 const Col = styled.div`
-  flex: 1 0 389px;
+  flex: 1 0 378px;
 
   &:first-child {
     margin-left: 1rem;
