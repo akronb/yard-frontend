@@ -1,34 +1,69 @@
 // @flow
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import { media } from '../../utils/styles';
 import type { LocationType } from '../types';
 import MapBox from './MapBox';
 
 const Wrapper = styled.div`
-  padding-bottom: 4rem;
   background-color: #fff;
+
+  ${media.tablet`
+    padding-bottom: 4rem;
+  `};
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.5);
+  margin: 0px -.5rem;
+
+  ${media.phone`
+    margin: 0px;
+  `};
+
+  ${media.tablet`
+    flex-direction: row;
+    box-shadow: none;
+  `};
 `;
 
 const Location = styled(MapBox)`
-  width: 100%;
-  height: 302px;
-  margin-top: -9.75rem;
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
+  flex: 1 1 100%;
+  height: 52vw;
+
+  ${media.tablet`
+    flex: 1 1 calc(50% - .5rem);
+    height: 302px;
+    margin-top: -9.75rem;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
+    margin-right: 1rem;
+  `};
 `;
 
 const Places = styled.div`
-  margin-top: -9.75rem;
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
   background-color: #fff;
+
+  ${media.tablet`
+    flex: 1 1 calc(50% - .5rem);
+    margin-top: -9.75rem;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .3);
+  `};
 `;
 
 const Place = styled.div`
-  padding: 1.5rem;
+  padding: 1.5rem .75rem;
+
   &:not(:last-child) {
     border-bottom: 1px solid #e0e0e1;
   }
+
+  ${media.tablet`
+    padding: 1.5rem;
+  `};
 `;
 
 const Name = styled.p`
@@ -52,25 +87,21 @@ export default (props: Props) =>
   (<Wrapper>
     <Grid>
       <Row>
-        <Col lg={6}>
-          <Location location={props.location} />
-        </Col>
-        <Col lg={6}>
-          <Places>
-            <Place>
-              <Name>Красный Октябрь</Name>
-              <Distance>24 минуты, 6 км</Distance>
-            </Place>
-            <Place>
-              <Name>World class</Name>
-              <Distance>2 минуты, 300 м</Distance>
-            </Place>
-            <Place>
-              <Name>Третьяковская галерея</Name>
-              <Distance>14 минут, 4 км</Distance>
-            </Place>
-          </Places>
-        </Col>
+        <Location location={props.location} />
+        <Places>
+          <Place>
+            <Name>Красный Октябрь</Name>
+            <Distance>24 минуты, 6 км</Distance>
+          </Place>
+          <Place>
+            <Name>World class</Name>
+            <Distance>2 минуты, 300 м</Distance>
+          </Place>
+          <Place>
+            <Name>Третьяковская галерея</Name>
+            <Distance>14 минут, 4 км</Distance>
+          </Place>
+        </Places>
       </Row>
     </Grid>
   </Wrapper>);

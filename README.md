@@ -8,11 +8,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Installation
 
-`yarn install` install dependencies
+`yarn install` installs dependencies
 
-`yarn flow:install` install Flow library definitions for dependencies
+`yarn flow:install` installs Flow library definitions for dependencies
 
-### Linting
+### Usage
+
+`yarn start` runs the app in development mode
+
+`yarn build` builds the app for production to the build folder.
 
 `yarn lint` runs ESLint
 
@@ -23,6 +27,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * [styled-components](https://github.com/styled-components/styled-components)
 * [react-router](https://github.com/ReactTraining/react-router)
 * [react-flexbox-grid](https://github.com/roylee0704/react-flexbox-grid)
+* [react-portal](https://github.com/tajo/react-portal)
 * [react-helmet](https://github.com/nfl/react-helmet)
 * [react-mapbox-gl](https://github.com/alex3165/react-mapbox-gl)
 * [eslint](https://github.com/eslint/eslint)

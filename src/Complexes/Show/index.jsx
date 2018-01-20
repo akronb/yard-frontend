@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
+import { media } from '../../utils/styles';
 import { get } from '../../api';
 import type { ComplexType } from '../types';
 import Header from './Header';
@@ -16,9 +17,12 @@ import Guide from './Guide';
 import Location from './Location';
 
 const Wrapper = styled.div`
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
+  padding: .5rem;
   background: #fff;
+
+  ${media.tablet`
+    padding: 1rem 0px 1.5rem;
+  `};
 `;
 
 class Show extends React.Component {
@@ -60,7 +64,7 @@ class Show extends React.Component {
         <Wrapper>
           <Header name={name} location={location} />
         </Wrapper>
-        <Carousel images={images} />
+        <Carousel images={images} name={name} />
         <Wrapper>
           <Facts details={details} units={units} />
           <Features statistics={statistics} details={details} />

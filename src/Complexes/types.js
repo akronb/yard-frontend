@@ -2,6 +2,8 @@
 export type ImagesType = {
   id: string,
   isPublic: boolean,
+  width: number,
+  height: number,
 };
 
 export type LocationType = {
