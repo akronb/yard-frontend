@@ -10,23 +10,26 @@ import arrowImg from '../img/arrow.svg';
 const Footer = styled.footer`
   background-color: #111;
   color: #a9afb6;
-  padding: 2rem 0px;
+  padding: 2rem .5rem 3rem;
   font-size: .875rem;
   font-weight: 300;
+
   ${media.tablet`
-    padding: 2rem 1rem 3rem;
+    padding: 2rem 0px;
   `};
 `;
 
 const Info = styled.p`
   margin-top: .5rem;
   margin-bottom: 0px;
+
   &:last-child {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
+
   ${media.tablet`
     &:last-child {
-      margin-bottom: 1rem;
+      margin-top: 1rem;
     }
   `};
 `;
@@ -41,10 +44,11 @@ const Line = styled.hr`
   border: 0;
   height: 2px;
   background-color: #646971;
-  margin-top: 0px;
+  margin-top: 2rem;
   margin-bottom: 1rem;
+
   ${media.tablet`
-    margin-top: 2rem;
+    margin-top: 0px;
   `};
 `;
 
@@ -61,8 +65,13 @@ const MenuLink = styled(Link)`
   margin-top: .5rem;
 `;
 
-const MenuLinkArrow = MenuLink.extend`
+const MenuLinkArrow = styled(Link)`
+  display: inline-block;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
   margin-top: 1rem;
+
   &:after {
     content: url(${arrowImg});
     margin-left: .5rem;
@@ -70,13 +79,14 @@ const MenuLinkArrow = MenuLink.extend`
 `;
 
 const Legal = styled.p`
-  padding-top: 6rem;
+  padding-top: 3rem;
   margin: 0px;
   font-size: .687rem;
   text-align: left;
   line-height: 1.15rem;
+
   ${media.tablet`
-    padding-top: 3rem;
+    padding-top: 6rem;
   `};
 `;
 
@@ -84,13 +94,13 @@ export default () =>
   (<Footer>
     <Grid>
       <Row>
-        <Col md={2} sm={3} xs={12}>
+        <Col lg={2} md={3} xs={12}>
           <Title>ООО «Ярд»</Title>
           <Info>ОГРН 1175074002531</Info>
           <Info>ИНН 5036165365</Info>
           <Info>+7 (999) 821-14-88</Info>
         </Col>
-        <Col mdOffset={2} md={2} smOffset={3} sm={3} xs={12}>
+        <Col lgOffset={2} lg={2} mdOffset={3} md={3} xs={12}>
           <Line />
           <Title>Жилые комплексы</Title>
           <Menu>
@@ -100,7 +110,7 @@ export default () =>
             <MenuLinkArrow to="#">Все ЖК Москвы</MenuLinkArrow>
           </Menu>
         </Col>
-        <Col md={2} sm={3} xs={12}>
+        <Col lg={2} md={3} xs={12}>
           <Line />
           <Title>Компания</Title>
           <Menu>
@@ -110,7 +120,7 @@ export default () =>
         </Col>
       </Row>
       <Row>
-        <Col mdOffset={4} md={8} smOffset={6} sm={6} xs={12}>
+        <Col lgOffset={4} lg={8} mdOffset={6} md={6} xs={12}>
           <Legal>
             Любая информация, представленная на данном сайте, носит исключительно информационный
             характер и ни при каких условиях не является публичной офертой, определяемой положениями

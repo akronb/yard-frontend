@@ -3,12 +3,20 @@ import React from 'react';
 import { Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import { media } from '../../utils/styles';
 import type { DetailsType } from '../types';
 import SeparationLine from './SeparationLine';
 import Heading from './Heading';
 import Pluralizer from '../../Components/Pluralizer';
 
-const Wrapper = styled.div`display: flex;`;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${media.phone`
+    flex-direction: row;
+  `};
+`;
 
 const Subheading = styled.small`
   display: block;
@@ -21,9 +29,18 @@ const Subheading = styled.small`
 `;
 
 const Fact = styled(Heading)`
+  font-size: 1.5rem;
+
   &:not(:last-child) {
-    margin-right: 3rem;
+    margin-bottom: 1rem;
   }
+
+  ${media.phone`
+    margin-bottom: 0px;
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+  `};
 `;
 
 type Props = {
@@ -58,7 +75,7 @@ export default (props: Props) => {
           </Fact>}
         {!!details.developer &&
           <Fact>
-            Группа «ПСН»
+            {details.developer}
             <Subheading>застройщик</Subheading>
           </Fact>}
       </Wrapper>
